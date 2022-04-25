@@ -10,6 +10,8 @@ class BeyzaKaradenizke extends StatefulWidget {
 class _BeyzaKaradenizkeState extends State<BeyzaKaradenizke> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(child: Text("Login")),
+    );
   }
 }
