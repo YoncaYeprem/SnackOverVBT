@@ -7,6 +7,7 @@ import 'package:snack_over_vbt/core/init/providerState/provider_init.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/init/locale/locale_manager.dart';
+import 'core/init/theme/app_theme.dart';
 import 'feature/login/view/login.dart';
 import 'firebase_options.dart';
 
@@ -33,13 +34,12 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      theme: ThemeManager.createTheme(AppThemeLight()),
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
