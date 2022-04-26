@@ -13,11 +13,10 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   await LocaleStorageManager.prefrencesInit();
   await EasyLocalization.ensureInitialized();
-
 
   runApp(
     MultiProvider(
@@ -45,9 +44,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const BeyzaKaradenizke(),
+          // primarySwatch: Colors.blue,
+          ),
+      home: LoginView(),
     );
   }
 }
