@@ -2,8 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:snack_over_vbt/core/init/locale_storage_manager.dart';
-import 'package:snack_over_vbt/core/init/providerState/provider_init.dart';
+import 'core/init/locale_storage_manager.dart';
+import 'core/init/providerState/provider_init.dart';
+import 'feature/splash/view/splash_view.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/init/locale/locale_manager.dart';
@@ -35,7 +36,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BeyzaKaradenizke(),
+      home: const SplashView(),
     );
   }
 }
