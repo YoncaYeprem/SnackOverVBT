@@ -27,6 +27,7 @@ class LightColor implements IColorTheme {
     brightness = Brightness.light;
     blackTextColor = colors.textColor;
     colorScheme = const ColorScheme.light().copyWith(
+      primary: colors.primaryColor,
       onPrimary: colors.lightPinkColor,
       onSurface: colors.backgroundColor,
       onSecondary: colors.darkPinkColor,

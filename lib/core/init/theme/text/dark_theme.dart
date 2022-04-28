@@ -1,4 +1,5 @@
 import 'package:flutter/src/painting/text_style.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
 
 import 'package:snack_over_vbt/core/init/theme/text/i_text_theme.dart';
@@ -37,6 +38,8 @@ class DarkTextTheme implements ITextTheme {
   @override
   final Color? primarColor;
   DarkTextTheme(this.primarColor) {
+    fontFamily = GoogleFonts.ubuntu().fontFamily;
+
     headline1 = const TextStyle(
       fontSize: 55,
       fontWeight: FontWeight.bold,

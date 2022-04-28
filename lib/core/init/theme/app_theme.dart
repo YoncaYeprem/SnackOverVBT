@@ -34,6 +34,10 @@ abstract class ThemeManager {
   static ThemeData createTheme(ITheme theme) {
     return ThemeData(
       toggleableActiveColor: const Color(0xffe53935),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: theme.colorTheme.colorScheme?.primary,
+      ),
+      //cursorColor: theme.colorTheme.colorScheme?.primary,
       bannerTheme: MaterialBannerThemeData(
           contentTextStyle: theme.textTheme.headline4?.copyWith(color: theme.colorTheme.colorScheme?.background),
           backgroundColor: theme.colorTheme.colorScheme?.onPrimary),
