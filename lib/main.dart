@@ -43,7 +43,10 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      home: const BeyzaKaradenizke(),
+      theme: ThemeData(
+          // primarySwatch: Colors.blue,
+          ),
+      home: LoginView(),
     );
   }
 }
