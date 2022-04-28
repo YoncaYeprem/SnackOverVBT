@@ -24,6 +24,7 @@ class AuthFunctions {
     return user;
   }
 
+
   void _sendSnacMessage(BuildContext context, String message) {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
