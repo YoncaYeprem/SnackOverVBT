@@ -33,6 +33,18 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
+  Future signInWithGoogle() async{
+    User? user = await AuthFunctions().signInGoogle(context);
+    if(user != null){
+      keepTokenData(user.uid);
+      if(user.uid.isNotEmpty){
+        context.navigateToPage(HomeView());
+      }else{
+        //TODO: Giriş başarısız yönlendirmesi
+      }
+    }
+  }
+
   Future keepTokenData(String token) async{
     await LocaleStorageManager.instance.setStringValue(StorageKeys.token, token);
   }
