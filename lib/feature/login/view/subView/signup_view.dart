@@ -39,7 +39,7 @@ extension SignUpEmaiilForm on LoginView {
                 icon: FontAwesomeIcons.google,
                 height: context.dynamicHeight(0.08),
                 onPressed: () async {
-                //context.read<LoginCubit>().signInWithGoogle();
+                context.read<LoginCubit>().signInWithGoogle();
                 },
               ),
               CircleIconButton(
