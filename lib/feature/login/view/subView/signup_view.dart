@@ -1,23 +1,30 @@
 part of '../login.dart';
 
 extension SignUpEmaiilForm on LoginView {
-  Padding signupForm(BuildContext context) {
+  Padding signupForm(BuildContext context,LoginState state) {
     return Padding(
       padding: context.paddingLow,
       child: Column(
         children: [
-          EmailInput(controller: _emailController),
+          EmailInput(controller: context.read<LoginCubit>().emailController),
           SizedBox(height: context.dynamicHeight(0.01)),
           PasswordInputField(
-            controller: _passwordController,
-            onValidator: (value) => _passwordController.text == value ? null : LocaleKeys.validation_notSameText.tr(),
+            controller: context.read<LoginCubit>().passwordController,
+            onValidator: (value) => context.read<LoginCubit>().passwordController.text == value
+                ? null
+                : LocaleKeys.validation_notSameText.tr(),
           ),
           SizedBox(height: context.dynamicHeight(0.01)),
           SizedBox(
             width: context.dynamicWidth(0.9),
             child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(elevation: 10, shadowColor: Colors.pink, primary: (Colors.pink)),
+                onPressed: () {
+                  context.read<LoginCubit>().signInWithEmailPassword();
+                },
+                style: ElevatedButton.styleFrom(
+                    elevation: 10,
+                    shadowColor: Colors.pink,
+                    primary: (Colors.pink)),
                 child: Text(LocaleKeys.login_title.tr())),
           ),
           SizedBox(height: context.dynamicHeight(0.04)),
@@ -25,25 +32,15 @@ extension SignUpEmaiilForm on LoginView {
           SizedBox(height: context.dynamicHeight(0.04)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              CircleIconButton(
-                color: Colors.blue,
-                icon: FontAwesomeIcons.facebookF,
-                height: context.dynamicHeight(0.08),
-                onPressed: () {},
-              ),
               CircleIconButton(
                 color: Colors.red, //TODO renkleri temadan çekilecektir
                 icon: FontAwesomeIcons.google,
                 height: context.dynamicHeight(0.08),
-                onPressed: () {},
-              ),
-              CircleIconButton(
-                color: Colors.blue,
-                icon: FontAwesomeIcons.twitter,
-                height: context.dynamicHeight(0.08),
-                onPressed: () {},
+                onPressed: () async {
+                //context.read<LoginCubit>().signInWithGoogle();
+                },
               ),
               CircleIconButton(
                 color: Colors.black,

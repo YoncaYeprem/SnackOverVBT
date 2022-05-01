@@ -44,10 +44,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const SplashView(),
+      home: LoginView(),
     );
   }
 }
