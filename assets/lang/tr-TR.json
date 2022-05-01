@@ -1,5 +1,25 @@
 {
     "welcome": {
         "welcome": "Hoşgeldiniz"
+    },
+    "login":{
+        "title":"Giriş Yap",
+        "registerTitle":"Kayıt Ol",
+        "forgot":"Şifremi Unuttum",
+        "orLogin" :  "Veya",
+        "withoutLogin":"Üye Olmadan Devam Et"
+    },
+    "buttons":{
+        "next":"İleri",
+        "finish":"Bitir"
+    },
+    "input":{
+        "password":"Şifre",
+        "email":"Mail"
+    },
+    "validation":{
+        "notValidPassword":"Lütfen şifrenizi en az 6 hane giriniz.",
+        "notValidEmail":"Lütfen email adresinizi doğru giriniz",
+        "notSameText":"Lütfen aynı şifre giriniz"
     }
 }
