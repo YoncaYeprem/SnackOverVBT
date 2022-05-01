@@ -9,7 +9,7 @@ import 'package:snack_over_vbt/feature/home/view/home_view.dart';
 import 'core/constants/app_constants.dart';
 import 'core/init/locale/locale_manager.dart';
 import 'core/init/theme/app_theme.dart';
-import 'feature/home/view/default_tab_view.dart';
+import 'feature/home/nav_bar.dart';
 import 'feature/login/view/login.dart';
 import 'firebase_options.dart';
 
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      home: HomeView(),
+      home: BottomNavBar(),
     );
   }
 }
