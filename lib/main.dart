@@ -2,8 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:snack_over_vbt/core/init/locale_storage_manager.dart';
-import 'package:snack_over_vbt/core/init/providerState/provider_init.dart';
+import 'core/init/locale_storage_manager.dart';
+import 'core/init/providerState/provider_init.dart';
+import 'feature/splash/view/splash_view.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/init/locale/locale_manager.dart';
@@ -44,9 +45,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
       theme: ThemeData(
-          // primarySwatch: Colors.blue,
-          ),
-      home: LoginView(),
+        primarySwatch: Colors.blue,
+      ),
+      home: const SplashView(),
     );
   }
 }
