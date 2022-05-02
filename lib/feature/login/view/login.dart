@@ -34,9 +34,7 @@ class LoginView extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: context.dynamicHeight(0.06)),
-                  SizedBox(
-                      height: context.dynamicHeight(0.3),
-                      child: Image.asset(ImageConstants.instance.loginTittle)),
+                  SizedBox(height: context.dynamicHeight(0.3), child: Image.asset(ImageConstants.instance.loginTittle)),
                   SizedBox(height: context.dynamicHeight(0.01)),
                   Container(
                     constraints: BoxConstraints.expand(
@@ -46,15 +44,15 @@ class LoginView extends StatelessWidget {
                       Tab(
                         child: Text(
                           LocaleKeys.login_title.tr(),
-                          style: context.textTheme.headline6?.copyWith(
-                              fontWeight: FontWeight.bold, color: Colors.black),
+                          style:
+                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
                       Tab(
                         child: Text(
                           LocaleKeys.login_registerTitle.tr(),
-                          style: context.textTheme.headline6?.copyWith(
-                              fontWeight: FontWeight.bold, color: Colors.black),
+                          style:
+                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
                     ]),
@@ -62,7 +60,7 @@ class LoginView extends StatelessWidget {
                   Expanded(
                     child: Container(
                       child: TabBarView(children: [
-                        signupForm(context,state),
+                        signupForm(context, state),
                         Container(
                           child: Text("Articles Body"),
                         ),

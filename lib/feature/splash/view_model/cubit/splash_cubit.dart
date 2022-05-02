@@ -29,20 +29,18 @@ class SplashCubit extends Cubit<SplashState> {
   }
 
   checkUserForRouting() async {
-    if (!storage.contains(StorageKeys.token) &&
-        storage.contains(StorageKeys.firstLoginApp)) {
+    if (!storage.contains(StorageKeys.token) && storage.contains(StorageKeys.firstLoginApp)) {
       await Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => const OnboardView(),
         ),
       );
-    } else if (!storage.contains(StorageKeys.token) &&
-        !storage.contains(StorageKeys.firstLoginApp)) {
+    } else if (!storage.contains(StorageKeys.token) && !storage.contains(StorageKeys.firstLoginApp)) {
       await Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const BeyzaKaradenizke(),
+          builder: (context) => LoginView(),
         ),
       );
     } else {
