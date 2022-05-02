@@ -2,6 +2,8 @@
     "welcome": {
         "welcome": "Hoşgeldiniz"
     },
+    "home": {
+        "discover": "Keşfet"
     "login":{
         "title":"Giriş Yap",
         "registerTitle":"Kayıt Ol",

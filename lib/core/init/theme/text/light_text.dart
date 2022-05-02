@@ -1,6 +1,6 @@
 import 'package:flutter/src/painting/text_style.dart';
 import 'dart:ui';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:snack_over_vbt/core/init/theme/text/i_text_theme.dart';
 
 class LightTextTheme implements ITextTheme {
@@ -38,6 +38,8 @@ class LightTextTheme implements ITextTheme {
   Color? primarColor;
 
   LightTextTheme() {
+    fontFamily = GoogleFonts.ubuntu().fontFamily;
+
     headline1 = const TextStyle(
       fontSize: 60,
       fontWeight: FontWeight.bold,

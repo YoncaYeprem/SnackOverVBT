@@ -3,6 +3,8 @@
 abstract class  LocaleKeys {
   static const welcome_welcome = 'welcome.welcome';
   static const welcome = 'welcome';
+  static const home_discover = 'home.discover';
+  static const home = 'home';
   static const login_title = 'login.title';
   static const login_registerTitle = 'login.registerTitle';
   static const login_forgot = 'login.forgot';

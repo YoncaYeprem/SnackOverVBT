@@ -2,13 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'core/init/locale_storage_manager.dart';
-import 'core/init/providerState/provider_init.dart';
-import 'feature/splash/view/splash_view.dart';
+import 'package:snack_over_vbt/core/init/locale_storage_manager.dart';
+import 'package:snack_over_vbt/core/init/providerState/provider_init.dart';
+import 'package:snack_over_vbt/feature/home/view/home_view.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/init/locale/locale_manager.dart';
 import 'core/init/theme/app_theme.dart';
+import 'feature/home/view/default_tab_view.dart';
 import 'feature/login/view/login.dart';
 import 'firebase_options.dart';
 
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      home: LoginView(),
+      home: HomeView(),
     );
   }
 }

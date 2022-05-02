@@ -1,5 +1,8 @@
 {
     "welcome": {
         "welcome": "Welcome"
+    },
+    "home": {
+        "discover": "Discover"
     }
 }

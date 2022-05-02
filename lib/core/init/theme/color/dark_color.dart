@@ -27,6 +27,7 @@ class DarkColor implements IColorTheme {
     brightness = Brightness.dark;
     blackTextColor = colors.textColor;
     colorScheme = const ColorScheme.dark().copyWith(
+      primary: colors.darkPinkColor,
       onPrimary: colors.darkPinkColor,
       onSurface: colors.backgroundColor,
       onSecondary: colors.darkPinkColor,
