@@ -24,5 +24,16 @@
         "notValidPassword": "Lütfen şifrenizi en az 6 hane giriniz.",
         "notValidEmail": "Lütfen email adresinizi doğru giriniz",
         "notSameText": "Lütfen aynı şifre giriniz"
+    },
+    "onboard":{
+        "doneButton":"Bitti",
+        "nextButton":"İleri",
+        "skipButton":"Geç",
+        "onboardTitlePage1":"Çözemediğiniz sorunları buraya getirin",
+        "onboardTitlePage2":"Size yardım edebilecek insanlara ulaşın",
+        "onboardTitlePage3":"Çözümü birlikte bulun",
+        "onboardContentPage1":"Hiç kendi başınıza birşeyler geliştirirken takıldığınız oldu mu? SnackOverVBT ile bu sorunları kolayca çözün.",
+        "onboardContentPage2":"SnackOverVBT'nin büyük kullanıcı tabanıyla daha önce sorunlarınızla karşılaşan kişilerden yardım alın.",
+        "onboardContentPage3":"Sorunlarınız koyduğunuz etiketler ve açıklamalarla kolayca erişilebilir.Bilgili insanlarla birden fazla şekilde çözümler bulun."
     }
 }
