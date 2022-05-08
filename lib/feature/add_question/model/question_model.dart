@@ -1,0 +1,3 @@
+class QuestionModel{
+  String? questionTitle;
+}

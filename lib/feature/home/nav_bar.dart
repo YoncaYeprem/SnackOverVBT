@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:snack_over_vbt/feature/home/view/home_view.dart';
 
+import '../add_question/view/add_question_sheet.dart';
+
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
 
@@ -21,6 +23,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
     });
   }
 
+  String? imagePath;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +32,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO ekleme kısmı yapılacada
+          addQuestionBottomSheet(context);
         },
         backgroundColor: context.colorScheme.onSecondary,
         foregroundColor: context.colorScheme.onSurface,
@@ -52,6 +56,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
       ),
     );
+  }
+
+  Future addQuestionBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+        context: context,
+        isDismissible: false,
+        isScrollControlled: true ,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+        ),
+        builder: (BuildContext context) {
+          return const AddQuestionSheet();
+        });
   }
 
   Widget buildPageView() {
