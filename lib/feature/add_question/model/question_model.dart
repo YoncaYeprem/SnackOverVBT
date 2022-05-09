@@ -22,4 +22,6 @@ class QuestionModel {
     String? questionDate;
 
   Map<String, dynamic> toJson() => _$QuestionModelToJson(this);
+
+  QuestionModel fromJson(Map<String, dynamic> json) => _$QuestionModelFromJson(json); 
 }
