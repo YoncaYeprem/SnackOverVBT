@@ -21,6 +21,12 @@ abstract class  LocaleKeys {
   static const validation_notValidEmail = 'validation.notValidEmail';
   static const validation_notSameText = 'validation.notSameText';
   static const validation = 'validation';
+  static const add_question_questionContent = 'add_question.questionContent';
+  static const add_question_questionTitle = 'add_question.questionTitle';
+  static const add_question_addImage = 'add_question.addImage';
+  static const add_question_ask = 'add_question.ask';
+  static const add_question_chooseCategory = 'add_question.chooseCategory';
+  static const add_question = 'add_question';
   static const onboard_doneButton = 'onboard.doneButton';
   static const onboard_nextButton = 'onboard.nextButton';
   static const onboard_skipButton = 'onboard.skipButton';

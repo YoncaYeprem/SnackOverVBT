@@ -25,6 +25,13 @@
         "notValidEmail": "Lütfen email adresinizi doğru giriniz",
         "notSameText": "Lütfen aynı şifre giriniz"
     },
+    "add_question": {
+        "questionContent": "Question Content",
+        "questionTitle": "Question Title",
+        "addImage": "Add Image For Question",
+        "ask": "Ask Now",
+        "chooseCategory":"Choose Question Category"
+    }
     "onboard":{
         "doneButton":"Done",
         "nextButton":"Next",

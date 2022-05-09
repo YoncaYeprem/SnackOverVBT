@@ -31,7 +31,7 @@ class LightColor implements IColorTheme {
       onPrimary: colors.lightPinkColor,
       onSurface: colors.backgroundColor,
       onSecondary: colors.darkPinkColor,
-      background: colors.backgroundColor,
+      background: colors.darkGrey,
     );
   }
 }
