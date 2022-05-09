@@ -8,7 +8,8 @@ class AppColors {
   final lightPinkColor = const Color(0xFFfce7ff);
   final primaryColor = const Color(0xFFc9b5e2);
   final middlePink = const Color(0xFFC9B6E4);
-
+  final selectedColor = const Color(0xff08222e);
+  final unselectedColor = const Color(0xff97b1c4);
   final darkGrey = const Color(0xFF6E7B8C);
 }
 

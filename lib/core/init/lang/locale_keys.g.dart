@@ -27,5 +27,15 @@ abstract class  LocaleKeys {
   static const add_question_ask = 'add_question.ask';
   static const add_question_chooseCategory = 'add_question.chooseCategory';
   static const add_question = 'add_question';
+  static const onboard_doneButton = 'onboard.doneButton';
+  static const onboard_nextButton = 'onboard.nextButton';
+  static const onboard_skipButton = 'onboard.skipButton';
+  static const onboard_onboardTitlePage1 = 'onboard.onboardTitlePage1';
+  static const onboard_onboardTitlePage2 = 'onboard.onboardTitlePage2';
+  static const onboard_onboardTitlePage3 = 'onboard.onboardTitlePage3';
+  static const onboard_onboardContentPage1 = 'onboard.onboardContentPage1';
+  static const onboard_onboardContentPage2 = 'onboard.onboardContentPage2';
+  static const onboard_onboardContentPage3 = 'onboard.onboardContentPage3';
+  static const onboard = 'onboard';
 
 }
