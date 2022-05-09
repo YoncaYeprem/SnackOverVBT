@@ -24,5 +24,16 @@
         "notValidPassword": "Lütfen şifrenizi en az 6 hane giriniz.",
         "notValidEmail": "Lütfen email adresinizi doğru giriniz",
         "notSameText": "Lütfen aynı şifre giriniz"
-    }
+    },
+    "onboard":{
+        "doneButton":"Done",
+        "nextButton":"Next",
+        "skipButton":"Skip",
+        "onboardTitlePage1":"Bring problems you can't solve",
+        "onboardTitlePage2":"Reach people to help you",
+        "onboardTitlePage3":"Find the solution together",
+        "onboardContentPage1":"Have you ever gotten stuck while developing on your own? Easily solve these problems with SnackOverVBT.",
+        "onboardContentPage2":"Get help from people who have encountered your problems before with SnackOverVBT's large user base.",
+        "onboardContentPage3":"Your problems can be easily accessed with the labels and explanations you put on your problems. Find solutions in more than one way with knowledgeable people."
+    } 
 }

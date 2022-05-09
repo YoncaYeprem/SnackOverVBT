@@ -21,5 +21,15 @@ abstract class  LocaleKeys {
   static const validation_notValidEmail = 'validation.notValidEmail';
   static const validation_notSameText = 'validation.notSameText';
   static const validation = 'validation';
+  static const onboard_doneButton = 'onboard.doneButton';
+  static const onboard_nextButton = 'onboard.nextButton';
+  static const onboard_skipButton = 'onboard.skipButton';
+  static const onboard_onboardTitlePage1 = 'onboard.onboardTitlePage1';
+  static const onboard_onboardTitlePage2 = 'onboard.onboardTitlePage2';
+  static const onboard_onboardTitlePage3 = 'onboard.onboardTitlePage3';
+  static const onboard_onboardContentPage1 = 'onboard.onboardContentPage1';
+  static const onboard_onboardContentPage2 = 'onboard.onboardContentPage2';
+  static const onboard_onboardContentPage3 = 'onboard.onboardContentPage3';
+  static const onboard = 'onboard';
 
 }

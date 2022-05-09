@@ -9,6 +9,11 @@ class ImageConstants {
 
   //Splash
   final String loginTittle = 'image/login_tittle'.toPNG;
+
+  //Onboard
+  final String ask = 'image/ask'.toPNG;
+  final String people = 'image/people'.toPNG;
+  final String think = 'image/think'.toPNG;
 }
 
 extension _ImageConstantsExtension on String {
