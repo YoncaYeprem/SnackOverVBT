@@ -31,7 +31,7 @@
         "addImage": "Add Image For Question",
         "ask": "Ask Now",
         "chooseCategory":"Choose Question Category"
-    }
+    },
     "onboard":{
         "doneButton":"Done",
         "nextButton":"Next",

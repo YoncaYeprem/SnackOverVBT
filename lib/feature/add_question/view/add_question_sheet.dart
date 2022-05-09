@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import 'package:snack_over_vbt/product/widget/custom_lottie_widget.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
 import '../viewmodel/cubit/add_question_cubit.dart';
@@ -14,7 +15,7 @@ class AddQuestionSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AddQuestionCubit>(
-      create: (context) => AddQuestionCubit(),
+      create: (context) => AddQuestionCubit(context),
       child: BlocConsumer<AddQuestionCubit, AddQuestionState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -41,7 +42,7 @@ class AddQuestionSheet extends StatelessWidget {
                   children: [
                     closeSheetIcon(context),
                     Padding(
-                      padding: context.horizontalPaddingNormal,
+                      padding: context.paddingNormal,
                       child: buildBody(context),
                     )
                   ],
@@ -70,6 +71,10 @@ class AddQuestionSheet extends StatelessWidget {
   Column buildBody(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+            width: 100,
+            height: 100,
+            child: LottieCustomWidget(path: 'question')),
         context.read<AddQuestionCubit>().image != null
             ? imageContainer(context)
             : addImageButton(context),
@@ -119,8 +124,8 @@ class AddQuestionSheet extends StatelessWidget {
       icon: Icon(
         Icons.photo_camera_rounded,
         color: context.colorScheme.background,
-      ), 
-      label: Text(LocaleKeys.add_question_addImage.tr()), 
+      ),
+      label: Text(LocaleKeys.add_question_addImage.tr()),
     );
   }
 

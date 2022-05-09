@@ -6,3 +6,4 @@ abstract class AddQuestionState {}
 class AddQuestionInitial extends AddQuestionState {}
 class SelectImage extends AddQuestionState {}
 class ChangeDropdownValue extends AddQuestionState {}
+class SaveQuestion extends AddQuestionState {}

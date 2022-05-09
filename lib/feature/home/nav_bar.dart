@@ -62,9 +62,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return showModalBottomSheet(
         context: context,
         isDismissible: false,
-        isScrollControlled: true ,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: context.normalRadius),
         ),
         builder: (BuildContext context) {
           return const AddQuestionSheet();
