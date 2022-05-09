@@ -31,6 +31,7 @@
         "addImage": "Sorunuz İçin Resim Ekleyin",
         "ask": "Şimdi Sor",
         "chooseCategory":"Soru Kategorisi Seçiniz"
+    },
     "onboard":{
         "doneButton":"Bitti",
         "nextButton":"İleri",

@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kartal/kartal.dart';
 import 'package:snack_over_vbt/core/init/lang/locale_keys.g.dart';
-import 'package:snack_over_vbt/product/component/password_input_field.dart';
+import 'package:snack_over_vbt/product/utils/login/password_input_field.dart';
 
 import '../../../core/constants/image_constants.dart';
 import '../../../product/component/circle_button.dart';
-import '../../../product/component/email_input_field.dart';
+import '../../../product/utils/login/email_input_field.dart';
 import '../../../product/component/firebase/auth_functions.dart';
 import '../viewmodel/cubit/login_cubit.dart';
 part 'subView/signup_view.dart';
