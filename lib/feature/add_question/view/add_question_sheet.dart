@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
 import '../viewmodel/cubit/add_question_cubit.dart';
 part './subView/questionTextFormField.dart';
@@ -61,7 +63,7 @@ class AddQuestionSheet extends StatelessWidget {
             },
             icon: Icon(
               Icons.close,
-              color: AppColors().darkGrey,
+              color: context.colorScheme.background,
             )));
   }
 
@@ -74,13 +76,13 @@ class AddQuestionSheet extends StatelessWidget {
         context.emptySizedHeightBoxLow,
         questionTextFormField(
             context: context,
-            hint: 'Question Title',
+            hint: LocaleKeys.add_question_questionTitle.tr(),
             contoller: context.read<AddQuestionCubit>().questionTitleContoller,
             node: context.read<AddQuestionCubit>().questionTitleNode),
         context.emptySizedHeightBoxLow,
         questionTextFormField(
             context: context,
-            hint: 'Question Content',
+            hint: LocaleKeys.add_question_questionContent.tr(),
             contoller:
                 context.read<AddQuestionCubit>().questionContentContoller,
             node: context.read<AddQuestionCubit>().questionContentNode,
@@ -111,21 +113,21 @@ class AddQuestionSheet extends StatelessWidget {
         context.read<AddQuestionCubit>().selectImage();
       },
       style: ElevatedButton.styleFrom(
-        primary: context.colorScheme.background,
-        onPrimary: AppColors().darkGrey,
+        primary: context.colorScheme.onSurface,
+        onPrimary: context.colorScheme.background,
       ),
       icon: Icon(
         Icons.photo_camera_rounded,
-        color: AppColors().darkGrey,
-      ), //icon data for elevated button
-      label: Text("Add Image For Question"), //label text
+        color: context.colorScheme.background,
+      ), 
+      label: Text(LocaleKeys.add_question_addImage.tr()), 
     );
   }
 
   Container dropdownContainer(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: AppColors().backgroundColor,
+          color: context.colorScheme.onSurface,
           borderRadius: context.lowBorderRadius),
       child: Padding(
         padding: context.horizontalPaddingLow,
@@ -142,7 +144,7 @@ class AddQuestionSheet extends StatelessWidget {
       onPressed: () {
         context.read<AddQuestionCubit>().saveNewQuestionToFirebase();
       },
-      child: Text("Ask Now"), //label text
+      child: Text(LocaleKeys.add_question_ask.tr()),
     );
   }
 }

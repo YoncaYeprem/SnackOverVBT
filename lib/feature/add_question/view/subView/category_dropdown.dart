@@ -5,9 +5,9 @@ extension DropdownbuttonExtension on AddQuestionSheet {
     return DropdownButton(
       focusNode: context.read<AddQuestionCubit>().questionCategoryNode,
       isExpanded: true,
-      hint: Text("Choose Question Category",
+      hint: Text(LocaleKeys.add_question_chooseCategory.tr(),
           style: context.textTheme.labelLarge?.copyWith(
-            color: AppColors().darkGrey,
+            color: context.colorScheme.background,
           )),
       dropdownColor: AppColors().backgroundColor,
       underline: const SizedBox(),
