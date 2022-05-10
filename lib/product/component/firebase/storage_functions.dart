@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:snack_over_vbt/feature/login/model/user_model.dart';
 
 import '../../../feature/add_question/model/question_model.dart';
 
@@ -28,6 +29,10 @@ class FirebaseStorageFunctions {
 
   Future saveQuestionToFirestore({required QuestionModel questionModel}) async {
     await firestore.collection("questions").doc().set(questionModel.toJson());
+  }
+
+  Future saveUserToFirestore({required UserModel userModel}) async {
+    await firestore.collection("profile").doc(userModel.userId).set(userModel.toJson());
   }
 
   void getUserDatas(String userId) {

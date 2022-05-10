@@ -11,8 +11,10 @@ import '../../../core/constants/image_constants.dart';
 import '../../../product/component/circle_button.dart';
 import '../../../product/utils/login/email_input_field.dart';
 import '../../../product/component/firebase/auth_functions.dart';
+import '../../../product/utils/login/name_input_field.dart';
 import '../viewmodel/cubit/login_cubit.dart';
 part 'subView/signup_view.dart';
+part 'subView/signin_view.dart';
 
 class LoginView extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -34,7 +36,9 @@ class LoginView extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: context.dynamicHeight(0.06)),
-                  SizedBox(height: context.dynamicHeight(0.3), child: Image.asset(ImageConstants.instance.loginTittle)),
+                  SizedBox(
+                      height: context.dynamicHeight(0.3),
+                      child: Image.asset(ImageConstants.instance.loginTittle)),
                   SizedBox(height: context.dynamicHeight(0.01)),
                   Container(
                     constraints: BoxConstraints.expand(
@@ -44,15 +48,15 @@ class LoginView extends StatelessWidget {
                       Tab(
                         child: Text(
                           LocaleKeys.login_title.tr(),
-                          style:
-                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                          style: context.textTheme.headline6?.copyWith(
+                              fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
                       Tab(
                         child: Text(
                           LocaleKeys.login_registerTitle.tr(),
-                          style:
-                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                          style: context.textTheme.headline6?.copyWith(
+                              fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
                     ]),
@@ -61,9 +65,7 @@ class LoginView extends StatelessWidget {
                     child: Container(
                       child: TabBarView(children: [
                         signupForm(context, state),
-                        Container(
-                          child: Text("Articles Body"),
-                        ),
+                        signinForm(context, state),
                       ]),
                     ),
                   )
