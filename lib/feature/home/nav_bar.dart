@@ -40,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         elevation: 2.0,
       ),
       bottomNavigationBar: SizedBox(
-        height: context.dynamicHeight(0.08),
+        height: context.dynamicHeight(0.1),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedPage,
