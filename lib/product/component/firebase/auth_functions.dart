@@ -8,6 +8,18 @@ class AuthFunctions {
   final GoogleSignIn googleSignIn = GoogleSignIn();
   User? user;
 
+  Future signUpUserWithEmail({required String email,required String password}) async{
+    try {
+      UserCredential credential = await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password);
+    return credential;
+    } on FirebaseAuthException catch (e) {
+      //TODO: make some error 
+      print(e.code);
+    }
+  }
+
   Future<User?> signInEmailPassword(LoginModel? userModel, BuildContext context) async {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
