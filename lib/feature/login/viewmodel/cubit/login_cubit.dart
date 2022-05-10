@@ -29,8 +29,8 @@ class LoginCubit extends Cubit<LoginState> {
   UserModel? user;
 
   Future signUpWithEmailPassword() async {
-    UserCredential credential = await AuthFunctions().signUpUserWithEmail(
-        email: emailController.text, password: passwordController.text);
+    UserCredential credential =
+        await AuthFunctions().signUpUserWithEmail(email: emailController.text, password: passwordController.text);
     if (credential != null) {
       userId = credential.user!.uid;
     }
@@ -44,9 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
         photoUrl: ImageConstants.instance.person);
 
     if (user != null) {
-      await FirebaseStorageFunctions()
-          .saveUserToFirestore(userModel: user!)
-          .then((value) {
+      await FirebaseStorageFunctions().saveUserToFirestore(userModel: user!).then((value) {
         context.navigateToPage(BottomNavBar());
       }).catchError((onError) {
         print("hata");
@@ -58,12 +56,11 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future signInWithEmailPassword() async {
     userModel = LoginModel(emailController.text, passwordController.text);
-    User? response =
-        await AuthFunctions().signInEmailPassword(userModel, context);
+    User? response = await AuthFunctions().signInEmailPassword(userModel, context);
     if (response != null) {
       keepTokenData(response.uid);
       if (response.uid.isNotEmpty) {
-        context.navigateToPage(HomeView());
+        context.navigateToPage(BottomNavBar());
       } else {
         //TODO: Giriş başarısız yönlendirmesi
       }
@@ -83,7 +80,6 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future keepTokenData(String token) async {
-    await LocaleStorageManager.instance
-        .setStringValue(StorageKeys.token, token);
+    await LocaleStorageManager.instance.setStringValue(StorageKeys.token, token);
   }
 }

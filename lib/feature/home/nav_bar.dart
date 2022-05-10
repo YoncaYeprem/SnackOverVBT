@@ -3,6 +3,7 @@ import 'package:kartal/kartal.dart';
 import 'package:snack_over_vbt/feature/home/view/home_view.dart';
 
 import '../add_question/view/add_question_sheet.dart';
+import '../profile/view/profile_view.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -12,23 +13,13 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedPage = 0;
-  PageController pageController = PageController(
-    initialPage: 0,
-    keepPage: true,
-  );
-  void pageChanged(int index) {
-    setState(() {
-      _selectedPage = index;
-    });
-  }
-
   String? imagePath;
+
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: buildPageView(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -39,23 +30,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
         child: const Icon(Icons.add),
         elevation: 2.0,
       ),
-      bottomNavigationBar: SizedBox(
-        height: context.dynamicHeight(0.1),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedPage,
-          onTap: (int index) {
-            setState(() {
-              _selectedPage = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home '),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-        ),
-      ),
+      body: Center(child: IndexedStack(index: _selectedIndex, children: const [HomeView(), ProfileView()])),
+      bottomNavigationBar: _showBottomNav(),
     );
+  }
+
+  Widget _showBottomNav() {
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home '),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: context.appTheme.colorScheme.onSecondary,
+      unselectedItemColor: Colors.grey,
+      onTap: _onTap,
+    );
+  }
+
+  void _onTap(int index) {
+    _selectedIndex = index;
+    setState(() {});
   }
 
   Future addQuestionBottomSheet(BuildContext context) {
@@ -69,18 +64,5 @@ class _BottomNavBarState extends State<BottomNavBar> {
         builder: (BuildContext context) {
           return const AddQuestionSheet();
         });
-  }
-
-  Widget buildPageView() {
-    return PageView(
-      controller: pageController,
-      onPageChanged: (index) {
-        pageChanged(index);
-      },
-      children: const <Widget>[
-        HomeView(),
-        HomeView(),
-      ],
-    );
   }
 }
