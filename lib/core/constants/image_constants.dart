@@ -14,7 +14,7 @@ class ImageConstants {
   final String ask = 'image/ask'.toPNG;
   final String people = 'image/people'.toPNG;
   final String think = 'image/think'.toPNG;
-
+  final String person = 'image/person'.toPNG;
   
 }
 
