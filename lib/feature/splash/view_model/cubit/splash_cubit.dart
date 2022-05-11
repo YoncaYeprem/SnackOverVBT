@@ -2,11 +2,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:snack_over_vbt/core/init/router/router_page/router_navigation.gr.dart';
 import '../../../../core/init/locale_storage_manager.dart';
 import '../../../../firebase_options.dart';
 import '../../../home/view/home_view.dart';
 import '../../../login/view/login.dart';
 import '../../../onboard/view/onboard_view.dart';
+import 'package:auto_route/auto_route.dart';
 
 part 'splash_state.dart';
 
@@ -30,26 +32,11 @@ class SplashCubit extends Cubit<SplashState> {
 
   checkUserForRouting() async {
     if (!storage.contains(StorageKeys.token) && storage.contains(StorageKeys.firstLoginApp)) {
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const OnboardView(),
-        ),
-      );
+      await context.router.push(OnboardViewRoute());
     } else if (!storage.contains(StorageKeys.token) && !storage.contains(StorageKeys.firstLoginApp)) {
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LoginView(),
-        ),
-      );
+      await context.router.push(LoginViewRoute());
     } else {
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeView(),
-        ),
-      );
+      await context.router.push(BottomNavBarRoute());
     }
   }
 }

@@ -14,7 +14,7 @@ class EmailInput extends StatelessWidget {
       autofillHints: [AutofillHints.email],
       controller: controller,
       keyboardType: TextInputType.emailAddress,
-      style: context.textTheme.subtitle1?.copyWith(color: context.colorScheme.onPrimary),
+      style: context.textTheme.subtitle1?.copyWith(color: context.appTheme.colorScheme.error),
       validator: (value) => value.isValidEmail ? null : LocaleKeys.validation_notValidEmail.tr(),
       decoration: InputDecoration(
           border: OutlineInputBorder(
