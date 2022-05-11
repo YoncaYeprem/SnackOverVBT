@@ -1,7 +1,8 @@
-import 'package:flutter/src/material/color_scheme.dart';
 import 'dart:ui';
 
-import 'package:snack_over_vbt/core/init/theme/color/i_color.dart';
+import 'package:flutter/src/material/color_scheme.dart';
+
+import 'i_color.dart';
 
 class LightColor implements IColorTheme {
   @override

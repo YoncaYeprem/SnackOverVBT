@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:snack_over_vbt/core/init/router/router_page/router_navigation.gr.dart';
+import '../../../../core/init/router/router_page/router_navigation.gr.dart';
 import '../../../../core/init/locale_storage_manager.dart';
 import '../../../../firebase_options.dart';
 import '../../../home/view/home_view.dart';

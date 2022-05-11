@@ -1,18 +1,17 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snack_over_vbt/core/init/lang/locale_keys.g.dart';
-import 'package:snack_over_vbt/core/init/theme/color/i_color.dart';
 import 'package:kartal/kartal.dart';
-import 'package:easy_localization/easy_localization.dart';
 
+import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/theme/color/i_color.dart';
 import '../viewmodel/cubit/home_cubit.dart';
 
-part '../view/subView/appbar_view.dart';
-part '../view/subView/general_title.dart';
-part '../view/subView/title_of_card.dart';
-part '../view/subView/text_field.dart';
-part '../view/subView/comment_text.dart';
 part '../view/subView/comment_icon_number.dart';
+part '../view/subView/comment_text.dart';
+part '../view/subView/general_title.dart';
+part '../view/subView/text_field.dart';
+part '../view/subView/title_of_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -27,69 +26,74 @@ class HomeView extends StatelessWidget {
           // TODO: implement listener
         },
         builder: (context, state) {
-          return SafeArea(
-            child: Scaffold(
-              appBar: appBar(context),
-              body: SingleChildScrollView(
-                physics: const NeverScrollableScrollPhysics(),
-                child: Padding(
-                  padding: context.paddingNormal,
-                  child: Column(
-                    children: [
-                      generalTitle(textSize),
-                      Padding(
-                        padding: context.verticalPaddingLow,
-                        child: searchBar(context),
-                      ),
-                      SizedBox(
-                        height: context.dynamicHeight(1),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemCount: 10,
-                          itemBuilder: (BuildContext context, int index) {
-                            return SizedBox(
-                              height: context.dynamicHeight(0.2),
-                              child: Card(
-                                elevation: 10,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: context.lowBorderRadius,
-                                ),
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: context.paddingLow,
-                                      child: titleOfTheCard(context),
-                                    ),
-                                    commentText(context),
-                                    SizedBox(
-                                      height: context.dynamicHeight(0.046),
-                                      child: Row(
-                                        children: [
-                                          likeButton(context),
-                                          likeNumber(context),
-                                          SizedBox(
-                                            width: context.dynamicWidth(0.1),
-                                          ),
-                                          commentIconAndNumber(context)
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+          var questionData = context.read<HomeCubit>().questionsList;
+          return CustomScrollView(
+            physics: BouncingScrollPhysics(),
+            slivers: [
+              _appbar(context),
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    generalTitle(textSize),
+                    searchBar(context),
+                  ],
                 ),
               ),
-            ),
+              SliverList(
+                  delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+                return Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: context.lowBorderRadius,
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: context.paddingLow,
+                        child: titleOfTheCard(context),
+                      ),
+                      commentText(context, questionData?[index].questionContent ?? ''),
+                      Row(
+                        children: [likeButton(context), likeNumber(context), commentIconAndNumber(context)],
+                      )
+                    ],
+                  ),
+                );
+              }, childCount: questionData?.length))
+            ],
           );
         },
       ),
+    );
+  }
+
+  SliverAppBar _appbar(BuildContext context) {
+    return SliverAppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      leading: Padding(
+        padding: context.paddingLow,
+        child: Container(
+          height: context.dynamicHeight(0.1),
+          width: context.dynamicWidth(0.2),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
+          child: Icon(Icons.notification_add, color: context.appTheme.colorScheme.onSecondary),
+        ),
+      ),
+      actions: [
+        SizedBox(
+          height: context.dynamicHeight(0.1),
+          width: context.dynamicWidth(0.18),
+          child: CircleAvatar(
+            child: ClipOval(
+              child: Image.network(
+                'https://media.kommunity.com/avatar/059df322-7cda-4157-8e9e-47c4a83426b3_avatar_5f2cf9025e420.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -99,7 +103,6 @@ class HomeView extends StatelessWidget {
         icon: Icon(
           Icons.star,
           color: context.colorScheme.primary,
-          size: context.dynamicHeight(0.045),
         ));
   }
 
@@ -111,12 +114,6 @@ class HomeView extends StatelessWidget {
         textAlign: TextAlign.center,
         style: context.textTheme.headline6,
       ),
-    );
-  }
-
-  SizedBox sizedBoxForPadding(BuildContext context) {
-    return SizedBox(
-      height: context.dynamicHeight(0.03),
     );
   }
 }

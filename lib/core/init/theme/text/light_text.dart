@@ -1,7 +1,9 @@
-import 'package:flutter/src/painting/text_style.dart';
 import 'dart:ui';
+
+import 'package:flutter/src/painting/text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:snack_over_vbt/core/init/theme/text/i_text_theme.dart';
+
+import 'i_text_theme.dart';
 
 class LightTextTheme implements ITextTheme {
   @override

@@ -2,12 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import 'package:snack_over_vbt/product/widget/custom_lottie_widget.dart';
+
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
+import '../../../product/widget/custom_lottie_widget.dart';
 import '../viewmodel/cubit/add_question_cubit.dart';
-part './subView/questionTextFormField.dart';
+
 part './subView/category_dropdown.dart';
+part './subView/questionTextFormField.dart';
 
 class AddQuestionSheet extends StatelessWidget {
   const AddQuestionSheet({Key? key}) : super(key: key);
@@ -20,22 +22,14 @@ class AddQuestionSheet extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return SingleChildScrollView(
-            physics:
-                context.read<AddQuestionCubit>().questionTitleNode.hasFocus ||
-                        context
-                            .read<AddQuestionCubit>()
-                            .questionContentNode
-                            .hasFocus ||
-                        context
-                            .read<AddQuestionCubit>()
-                            .questionCategoryNode
-                            .hasFocus
-                    ? const ScrollPhysics()
-                    : const NeverScrollableScrollPhysics(),
+            physics: context.read<AddQuestionCubit>().questionTitleNode.hasFocus ||
+                    context.read<AddQuestionCubit>().questionContentNode.hasFocus ||
+                    context.read<AddQuestionCubit>().questionCategoryNode.hasFocus
+                ? const ScrollPhysics()
+                : const NeverScrollableScrollPhysics(),
             child: SafeArea(
               child: Container(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
@@ -71,13 +65,8 @@ class AddQuestionSheet extends StatelessWidget {
   Column buildBody(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-            width: 100,
-            height: 100,
-            child: LottieCustomWidget(path: 'question')),
-        context.read<AddQuestionCubit>().image != null
-            ? imageContainer(context)
-            : addImageButton(context),
+        const SizedBox(width: 100, height: 100, child: LottieCustomWidget(path: 'question')),
+        context.read<AddQuestionCubit>().image != null ? imageContainer(context) : addImageButton(context),
         context.emptySizedHeightBoxLow,
         questionTextFormField(
             context: context,
@@ -88,8 +77,7 @@ class AddQuestionSheet extends StatelessWidget {
         questionTextFormField(
             context: context,
             hint: LocaleKeys.add_question_questionContent.tr(),
-            contoller:
-                context.read<AddQuestionCubit>().questionContentContoller,
+            contoller: context.read<AddQuestionCubit>().questionContentContoller,
             node: context.read<AddQuestionCubit>().questionContentNode,
             minLine: 6,
             maxLine: 100),
@@ -131,9 +119,7 @@ class AddQuestionSheet extends StatelessWidget {
 
   Container dropdownContainer(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          color: context.colorScheme.onSurface,
-          borderRadius: context.lowBorderRadius),
+      decoration: BoxDecoration(color: context.colorScheme.onSurface, borderRadius: context.lowBorderRadius),
       child: Padding(
         padding: context.horizontalPaddingLow,
         child: categoryDropdownButton(context),
@@ -143,9 +129,7 @@ class AddQuestionSheet extends StatelessWidget {
 
   ElevatedButton askQuestionButton(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          shape: const StadiumBorder(),
-          padding: context.horizontalPaddingNormal),
+      style: ElevatedButton.styleFrom(shape: const StadiumBorder(), padding: context.horizontalPaddingNormal),
       onPressed: () {
         context.read<AddQuestionCubit>().saveNewQuestionToFirebase();
       },

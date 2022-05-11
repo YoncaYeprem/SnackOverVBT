@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:snack_over_vbt/core/init/lang/locale_keys.g.dart';
+
+import '../../../core/init/lang/locale_keys.g.dart';
 
 class PasswordInputField extends StatefulWidget {
   final TextEditingController? controller;

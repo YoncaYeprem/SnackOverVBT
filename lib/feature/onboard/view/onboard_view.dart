@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snack_over_vbt/core/init/theme/color/i_color.dart';
-import 'package:snack_over_vbt/feature/login/view/login.dart';
-import 'package:snack_over_vbt/feature/onboard/model/onboard_model.dart';
+import '../../../core/init/theme/color/i_color.dart';
+import '../../login/view/login.dart';
+import '../model/onboard_model.dart';
 import 'package:kartal/kartal.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../viewmodel/cubit/onboard_cubit.dart';
@@ -19,9 +19,7 @@ class OnboardView extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: context
-                .read<OnboardCubit>()
-                .colorList[context.read<OnboardCubit>().currentIndex],
+            backgroundColor: context.read<OnboardCubit>().colorList[context.read<OnboardCubit>().currentIndex],
             body: SafeArea(
                 child: PageView.builder(
                     controller: context.read<OnboardCubit>().controller,
@@ -34,9 +32,7 @@ class OnboardView extends StatelessWidget {
                         padding: context.paddingMedium,
                         child: Column(
                           children: [
-                            Expanded(
-                                flex: 3,
-                                child: Image.asset(onboardItems[index].image)),
+                            Expanded(flex: 3, child: Image.asset(onboardItems[index].image)),
                             Expanded(
                               flex: 2,
                               child: buildDescriptionTexts(index, context),
@@ -70,8 +66,7 @@ class OnboardView extends StatelessWidget {
           height: context.dynamicHeight(0.02),
         ),
         Text(onboardItems[index].description,
-            textAlign: TextAlign.center,
-            style: context.textTheme.titleMedium?.copyWith()),
+            textAlign: TextAlign.center, style: context.textTheme.titleMedium?.copyWith()),
       ],
     );
   }
@@ -112,18 +107,14 @@ class OnboardView extends StatelessWidget {
               )),
           ElevatedButton(
               onPressed: () {
-                context.read<OnboardCubit>().currentIndex ==
-                        onboardItems.length - 1
+                context.read<OnboardCubit>().currentIndex == onboardItems.length - 1
                     ? context.read<OnboardCubit>().navigateToLogin(context)
                     : context.read<OnboardCubit>().navigateToNextPage(index);
               },
               style: ElevatedButton.styleFrom(
-                  padding: context.horizontalPaddingMedium,
-                  primary: Colors.white,
-                  shape: const StadiumBorder()),
+                  padding: context.horizontalPaddingMedium, primary: Colors.white, shape: const StadiumBorder()),
               child: Text(
-                context.read<OnboardCubit>().currentIndex ==
-                        onboardItems.length - 1
+                context.read<OnboardCubit>().currentIndex == onboardItems.length - 1
                     ? LocaleKeys.onboard_doneButton.tr()
                     : LocaleKeys.onboard_nextButton.tr(),
                 style: context.textTheme.headline6,

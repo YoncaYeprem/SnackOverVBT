@@ -1,8 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-
-import '../../../core/init/lang/locale_keys.g.dart';
 
 class NameInput extends StatelessWidget {
   final TextEditingController? controller;
@@ -14,8 +11,7 @@ class NameInput extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.text,
-      style: context.textTheme.subtitle1
-          ?.copyWith(color: context.colorScheme.onPrimary),
+      style: context.textTheme.subtitle1?.copyWith(color: context.colorScheme.onPrimary),
       //validator: (value) => value.isValidEmail ? null : LocaleKeys.validation_notValidEmail.tr(),
       decoration: InputDecoration(
           border: OutlineInputBorder(

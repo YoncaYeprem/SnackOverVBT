@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kartal/kartal.dart';
-import 'package:snack_over_vbt/core/init/lang/locale_keys.g.dart';
-import 'package:snack_over_vbt/product/utils/login/password_input_field.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../product/utils/login/password_input_field.dart';
 
 import '../../../core/constants/image_constants.dart';
 import '../../../product/component/circle_button.dart';
@@ -36,9 +36,7 @@ class LoginView extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: context.dynamicHeight(0.06)),
-                  SizedBox(
-                      height: context.dynamicHeight(0.3),
-                      child: Image.asset(ImageConstants.instance.loginTittle)),
+                  SizedBox(height: context.dynamicHeight(0.3), child: Image.asset(ImageConstants.instance.loginTittle)),
                   SizedBox(height: context.dynamicHeight(0.01)),
                   Container(
                     constraints: BoxConstraints.expand(
@@ -48,15 +46,15 @@ class LoginView extends StatelessWidget {
                       Tab(
                         child: Text(
                           LocaleKeys.login_title.tr(),
-                          style: context.textTheme.headline6?.copyWith(
-                              fontWeight: FontWeight.bold, color: Colors.black),
+                          style:
+                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
                       Tab(
                         child: Text(
                           LocaleKeys.login_registerTitle.tr(),
-                          style: context.textTheme.headline6?.copyWith(
-                              fontWeight: FontWeight.bold, color: Colors.black),
+                          style:
+                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ),
                     ]),

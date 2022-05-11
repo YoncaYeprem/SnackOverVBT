@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:snack_over_vbt/feature/home/view/home_view.dart';
 
 import '../add_question/view/add_question_sheet.dart';
 import '../profile/view/profile_view.dart';
+import 'view/home_view.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -13,10 +13,8 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  String? imagePath;
-
   int _selectedIndex = 0;
-
+  List pages = [HomeView(), ProfileView()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +28,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         child: const Icon(Icons.add),
         elevation: 2.0,
       ),
-      body: Center(child: IndexedStack(index: _selectedIndex, children: const [HomeView(), ProfileView()])),
+      body: pages[_selectedIndex],
       bottomNavigationBar: _showBottomNav(),
     );
   }

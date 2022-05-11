@@ -2,10 +2,10 @@ import 'package:kartal/kartal.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:snack_over_vbt/core/init/locale_storage_manager.dart';
-import 'package:snack_over_vbt/feature/home/nav_bar.dart';
-import 'package:snack_over_vbt/feature/login/model/user_model.dart';
-import 'package:snack_over_vbt/product/component/firebase/auth_functions.dart';
+import '../../../../core/init/locale_storage_manager.dart';
+import '../../../home/nav_bar.dart';
+import '../../model/user_model.dart';
+import '../../../../product/component/firebase/auth_functions.dart';
 
 import '../../../../core/constants/image_constants.dart';
 import '../../../../product/component/firebase/storage_functions.dart';

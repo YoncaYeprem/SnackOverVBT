@@ -9,7 +9,6 @@ extension CommentIcon on HomeView {
             icon: Icon(
               Icons.messenger_rounded,
               color: context.colorScheme.primary,
-              size: context.dynamicHeight(0.045),
             )),
         Align(
           alignment: Alignment.bottomCenter,

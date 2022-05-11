@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:snack_over_vbt/core/init/lang/locale_keys.g.dart';
+
 import '../../../core/constants/image_constants.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 
 class OnboardModel {
   String title;
