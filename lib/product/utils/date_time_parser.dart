@@ -3,7 +3,7 @@ class DateTimeParser {
     if (date != null && date.isNotEmpty) {
       var dateTime = DateTime.parse(date);
 
-      var format = "${dateTime.day}-${dateTime.month}-${dateTime.year}";
+      var format = "${dateTime.day}-${dateTime.month}-${dateTime.year}-${dateTime.hour}-${dateTime.minute}";
 
       return format;
     } else {

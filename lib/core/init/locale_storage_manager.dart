@@ -17,6 +17,10 @@ class LocaleStorageManager {
     return;
   }
 
+  static void preferencesInitReady(SharedPreferences preferences) async {
+    instance._preferences = preferences;
+  }
+
   Future<bool> clear() async {
     return await _preferences!.clear();
   }
