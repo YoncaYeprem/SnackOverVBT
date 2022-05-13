@@ -7,19 +7,19 @@ extension TextFieldExtension on ProfileView {
       style: context.textTheme.headline4,
       decoration: InputDecoration(
         border: InputBorder.none,
-        hintText: 'Search Question',
+        hintText: LocaleKeys.profile_searchQuestionTitle.tr(),
         hintStyle: context.textTheme.headline4,
         filled: true,
         suffixIcon: const Icon(Icons.search),
         suffixIconColor: context.colorScheme.primary,
-        fillColor: Colors.white54,
+        fillColor: context.colorScheme.outline,
         contentPadding: context.paddingLow,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors().lightPinkColor),
+          borderSide: BorderSide(color: context.colorScheme.onPrimary),
           borderRadius: context.lowBorderRadius,
         ),
         enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: AppColors().darkGrey),
+            borderSide: BorderSide(color: context.colorScheme.background),
             borderRadius: context.lowBorderRadius),
       ),
     );
@@ -31,19 +31,19 @@ extension TextFieldExtension on ProfileView {
       style: context.textTheme.headline4,
       decoration: InputDecoration(
         border: InputBorder.none,
-        hintText: 'Search Answer',
+        hintText: LocaleKeys.profile_searchAnswerTitle.tr(),
         hintStyle: context.textTheme.headline4,
         filled: true,
         suffixIcon: const Icon(Icons.search),
         suffixIconColor: context.colorScheme.primary,
-        fillColor: Colors.white54,
+        fillColor: context.colorScheme.outline,
         contentPadding: context.paddingLow,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors().lightPinkColor),
+          borderSide: BorderSide(color: context.colorScheme.onPrimary),
           borderRadius: context.lowBorderRadius,
         ),
         enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: AppColors().darkGrey),
+            borderSide: BorderSide(color: context.colorScheme.background),
             borderRadius: context.lowBorderRadius),
       ),
     );

@@ -32,11 +32,11 @@ class ProfileView extends StatelessWidget {
               Container(
                 width: context.width,
                 height: context.dynamicHeight(0.35),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color(0xFFDD3DE1),
-                      Color(0xFF6043B2),
+                      context.appTheme.colorScheme.primaryContainer,
+                      context.appTheme.colorScheme.secondaryContainer,
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -80,11 +80,11 @@ class ProfileView extends StatelessWidget {
             child: Container(
               width: context.width,
               height: context.dynamicHeight(0.60),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40)),
-                color: Color(0xFFEFF0F7),
+                color: context.colorScheme.onTertiary,
               ),
               child: DefaultTabController(
                 length: 2,
@@ -97,14 +97,14 @@ class ProfileView extends StatelessWidget {
                         borderSide: BorderSide(width: 3.0, color: Colors.amber),
                         insets: EdgeInsets.symmetric(horizontal: 64.0),
                       ),
-                      tabs: const [
+                      tabs: [
                         Text(
-                          "My Question",
-                          style: TextStyle(color: Colors.black),
+                          LocaleKeys.profile_myQuestionTitle.tr(),
+                          style: context.textTheme.headline5,
                         ),
                         Text(
-                          "My Answer",
-                          style: TextStyle(color: Colors.black),
+                          LocaleKeys.profile_myAnswerTitle.tr(),
+                          style: context.textTheme.headline5,
                         ),
                       ],
                     ),
