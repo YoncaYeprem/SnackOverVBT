@@ -49,6 +49,7 @@ dependencies:
   cloud_firestore: ^3.1.13
   google_sign_in: ^5.3.0
   #utils
+  cached_network_image: ^3.2.0
   auto_route: ^4.0.0
   google_fonts: ^2.3.2
   kartal: ^2.3.1

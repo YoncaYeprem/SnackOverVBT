@@ -4,6 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kartal/kartal.dart';
+import 'package:provider/provider.dart';
+import '../../../../core/init/localStorage/storage.dart';
 import '../../model/question_model.dart';
 import '../../../../product/utils/date_time_parser.dart';
 
@@ -37,7 +39,7 @@ class AddQuestionCubit extends Cubit<AddQuestionState> {
     categoryList.add(dropdownCategory ?? "");
 
     final questionModel = QuestionModel(
-        questionOwnerId: "context.read<LocaleManager>().token",
+        questionOwnerId: context.read<LocaleManager>().token,
         questionTitle: questionTitleContoller.text,
         questionContent: questionContentContoller.text,
         questionImage: uploadedImagePath,

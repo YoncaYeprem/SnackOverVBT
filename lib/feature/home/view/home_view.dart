@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import 'package:snack_over_vbt/product/utils/extension/capitaliaze_extension.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
@@ -20,7 +21,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     double textSize = 40;
     return BlocProvider<HomeCubit>(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit(context),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {
           // TODO: implement listener
@@ -39,27 +40,38 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
               ),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-                return Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: context.lowBorderRadius,
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: context.paddingLow,
-                        child: titleOfTheCard(context),
+              context.read<HomeCubit>().isLoading
+                  ? const SliverToBoxAdapter(
+                      child: Center(
+                        child: CircularProgressIndicator(),
                       ),
-                      commentText(context, questionData?[index].questionContent ?? ''),
-                      Row(
-                        children: [likeButton(context), likeNumber(context), commentIconAndNumber(context)],
-                      )
-                    ],
-                  ),
-                );
-              }, childCount: questionData?.length))
+                    )
+                  : SliverList(
+                      delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+                      context.read<HomeCubit>().getUserQuestionImage(userId: questionData?[index].questionOwnerId);
+                      return Card(
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: context.lowBorderRadius,
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: context.paddingLow,
+                              child: titleOfTheCard(context,
+                                  imgUrl: context.read<HomeCubit>().questionImage?.photoUrl ??
+                                      'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
+                                  surname: "${context.read<HomeCubit>().questionImage?.surname}".capitalize(),
+                                  name: "${context.read<HomeCubit>().questionImage?.name}".capitalize()),
+                            ),
+                            commentText(context, questionData?[index].questionContent.toString().capitalize() ?? 'a'),
+                            Row(
+                              children: [likeButton(context), likeNumber(context), commentIconAndNumber(context)],
+                            )
+                          ],
+                        ),
+                      );
+                    }, childCount: questionData?.length))
             ],
           );
         },
@@ -82,17 +94,14 @@ class HomeView extends StatelessWidget {
       ),
       actions: [
         SizedBox(
-          height: context.dynamicHeight(0.1),
+          height: context.dynamicHeight(0.15),
           width: context.dynamicWidth(0.18),
           child: CircleAvatar(
-            child: ClipOval(
-              child: Image.network(
-                'https://media.kommunity.com/avatar/059df322-7cda-4157-8e9e-47c4a83426b3_avatar_5f2cf9025e420.jpg',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
+              backgroundImage: NetworkImage(
+            context.read<HomeCubit>().userImage?.photoUrl ??
+                'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
+          )),
+        )
       ],
     );
   }

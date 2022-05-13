@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../../core/init/localStorage/storage.dart';
 import '../../../../core/init/router/router_page/router_navigation.gr.dart';
 import '../../../../core/init/locale_storage_manager.dart';
 import '../../../../firebase_options.dart';
@@ -26,8 +28,13 @@ class SplashCubit extends Cubit<SplashState> {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
+      _initCache();
       await checkUserForRouting();
     });
+  }
+
+  Future<void> _initCache() async {
+    await LocaleStorageManager.prefrencesInit();
   }
 
   checkUserForRouting() async {
@@ -36,6 +43,8 @@ class SplashCubit extends Cubit<SplashState> {
     } else if (!storage.contains(StorageKeys.token) && !storage.contains(StorageKeys.firstLoginApp)) {
       await context.router.push(LoginViewRoute());
     } else {
+      context.read<LocaleManager>().saveToken(LocaleStorageManager.instance.getStringValue(StorageKeys.token));
+
       await context.router.push(BottomNavBarRoute());
     }
   }
