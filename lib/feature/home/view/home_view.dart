@@ -64,7 +64,7 @@ class HomeView extends StatelessWidget {
                                   surname: "${context.read<HomeCubit>().questionImage?.surname}".capitalize(),
                                   name: "${context.read<HomeCubit>().questionImage?.name}".capitalize()),
                             ),
-                            commentText(context, questionData?[index].questionContent.toString().capitalize() ?? ''),
+                            commentText(context, questionData?[index].questionContent.toString().capitalize() ?? 'a'),
                             Row(
                               children: [likeButton(context), likeNumber(context), commentIconAndNumber(context)],
                             )
