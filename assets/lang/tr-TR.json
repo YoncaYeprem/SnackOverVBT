@@ -42,5 +42,11 @@
         "onboardContentPage1":"Hiç kendi başınıza birşeyler geliştirirken takıldığınız oldu mu? SnackOverVBT ile bu sorunları kolayca çözün.",
         "onboardContentPage2":"SnackOverVBT'nin büyük kullanıcı tabanıyla daha önce sorunlarınızla karşılaşan kişilerden yardım alın.",
         "onboardContentPage3":"Sorunlarınız koyduğunuz etiketler ve açıklamalarla kolayca erişilebilir.Bilgili insanlarla birden fazla şekilde çözümler bulun."
+    },
+    "profile":{
+        "myQuestionTitle":"Sorularım",
+        "myAnswerTitle":"Cevaplarım",
+        "searchQuestionTitle":"Sorularında ara",
+        "searchAnswerTitle":"Cevaplarında ara"
     }
 }
