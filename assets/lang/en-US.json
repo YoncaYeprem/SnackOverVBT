@@ -42,5 +42,16 @@
         "onboardContentPage1":"Have you ever gotten stuck while developing on your own? Easily solve these problems with SnackOverVBT.",
         "onboardContentPage2":"Get help from people who have encountered your problems before with SnackOverVBT's large user base.",
         "onboardContentPage3":"Your problems can be easily accessed with the labels and explanations you put on your problems. Find solutions in more than one way with knowledgeable people."
-    } 
+    },
+    "profile":{
+        "myQuestionTitle":"My Question",
+        "myAnswerTitle":"My Answer",
+        "searchQuestionTitle":"Search Question",
+        "searchAnswerTitle":"Search Answer"
+    },
+    "profileSettings":{
+        "settings":"Settings",
+        "languageChangeTitle":"Language Change",
+        "languageChangeSubtitle":"You can change application language"
+    }
 }
