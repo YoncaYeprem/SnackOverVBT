@@ -32,7 +32,11 @@ class FirebaseStorageFunctions {
     await firestore.collection("profile").doc(userModel.userId).set(userModel.toJson());
   }
 
-  void getUserDatas(String userId) {}
+  Future getUserDatas({String? userId}) async {
+    var profile = await firestore.collection("profile").doc(userId).get();
+
+    return UserModel().fromJson(profile.data() ?? {});
+  }
 
   Future getAllQuestionsFromFirebase() async {
     List<QuestionModel> allData = [];
