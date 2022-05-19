@@ -24,7 +24,6 @@ extension ProfileMoreButton on ProfileView {
       ),
     );
   }
-
   IconButton commentMoreButton(BuildContext context) {
     return IconButton(
       onPressed: (() {}),

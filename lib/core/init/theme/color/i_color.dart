@@ -13,6 +13,8 @@ class AppColors {
   final unselectedColor = const Color(0xff97b1c4);
   final darkGrey = const Color(0xFF6E7B8C);
 
+  final softGrey = Colors.white54;
+
   final lightPurple = const Color(0xFFDD3DE1);
   final darkPurple = const Color(0xFF6043B2);
   final profileTabBackground = const Color(0xFFEFF0F7);

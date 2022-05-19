@@ -46,5 +46,4 @@ abstract class  LocaleKeys {
   static const profileSettings_languageChangeTitle = 'profileSettings.languageChangeTitle';
   static const profileSettings_languageChangeSubtitle = 'profileSettings.languageChangeSubtitle';
   static const profileSettings = 'profileSettings';
-
 }
