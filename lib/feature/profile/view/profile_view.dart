@@ -111,7 +111,7 @@ class ProfileView extends StatelessWidget {
                           bottom: 0,
                           child: Container(
                             width: context.width,
-                            height: context.dynamicHeight(0.60),
+                            height: context.dynamicHeight(0.65),
                             decoration: BoxDecoration(
                               borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(40),

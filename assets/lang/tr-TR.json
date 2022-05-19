@@ -52,7 +52,11 @@
     "profileSettings":{
         "settings":"Ayarlar",
         "languageChangeTitle":"Dili Değiştir",
-        "languageChangeSubtitle":"Uygulama dilini değiştirebilirsiniz"
+        "languageChangeSubtitle":"Uygulama dilini değiştirebilirsiniz",
+        "themeChangeTitle":"Temayı Değiştir",
+        "themeChangeSubtitle":"Uygulama temasını değiştirebilirsiniz",
+        "themeDark":"Koyu",
+        "themeLight":"Açık"
 
     }
 }
