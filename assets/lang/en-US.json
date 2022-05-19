@@ -48,5 +48,10 @@
         "myAnswerTitle":"My Answer",
         "searchQuestionTitle":"Search Question",
         "searchAnswerTitle":"Search Answer"
+    },
+    "profileSettings":{
+        "settings":"Settings",
+        "languageChangeTitle":"Language Change",
+        "languageChangeSubtitle":"You can change application language"
     }
 }

@@ -1,6 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:snack_over_vbt/core/init/router/router_page/router_navigation.gr.dart';
+import 'package:snack_over_vbt/feature/profile/view/modules/profile_settings/view/profile_settings_view.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
@@ -57,7 +62,9 @@ class ProfileView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         profileImageCard(context,
+                            "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"),
                             "https://yt3.ggpht.com/Ri_-Z2lzJA34shodzbi4eqE2KftIr5pke9E37e8i_iyy_9JlxcQJxPvXkeDZUttqraEfS-FA=s900-c-k-c0x00ffffff-no-rj"),
+
                         profileNameText(context, "Mert Can Kıyak"),
                         profileBiographyText(
                             context, "Hi I'am Junior Developer"),
@@ -70,6 +77,11 @@ class ProfileView extends StatelessWidget {
               Positioned(
                 right: 20,
                 top: 20,
+                child: profileMoreButton(
+                    context: context,
+                    onTap: () async {
+                      await context.router.push(ProfileSettingsViewRoute());
+                    }),
                 child: profileMoreButton(context),
               ),
             ],
@@ -81,7 +93,7 @@ class ProfileView extends StatelessWidget {
               width: context.width,
               height: context.dynamicHeight(0.60),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40)),
                 color: context.colorScheme.onTertiary,

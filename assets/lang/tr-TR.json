@@ -48,5 +48,11 @@
         "myAnswerTitle":"Cevaplarım",
         "searchQuestionTitle":"Sorularında ara",
         "searchAnswerTitle":"Cevaplarında ara"
+    },
+    "profileSettings":{
+        "settings":"Ayarlar",
+        "languageChangeTitle":"Dili Değiştir",
+        "languageChangeSubtitle":"Uygulama dilini değiştirebilirsiniz"
+
     }
 }
