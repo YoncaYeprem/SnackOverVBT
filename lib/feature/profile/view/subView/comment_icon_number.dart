@@ -1,19 +1,19 @@
 part of '../profile_view.dart';
 
 extension CommentIcon on ProfileView {
-  Row commentIconAndNumber(BuildContext context) {
+  Row commentIconAndNumber({required BuildContext context, required IconData icon, required String countNumber}) {
     return Row(
       children: [
         IconButton(
             onPressed: () {},
             icon: Icon(
-              Icons.messenger_rounded,
+              icon,
               color: context.colorScheme.primary,
             )),
         Align(
           alignment: Alignment.bottomCenter,
           child: Text(
-            '12k',
+            countNumber,
             textAlign: TextAlign.center,
             style: context.textTheme.headline6,
           ),

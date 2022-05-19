@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:snack_over_vbt/core/init/localStorage/storage.dart';
+import '../../../../core/init/localStorage/storage.dart';
 import '../../../../core/init/locale_storage_manager.dart';
 import '../../../home/nav_bar.dart';
 import '../../model/user_model.dart';

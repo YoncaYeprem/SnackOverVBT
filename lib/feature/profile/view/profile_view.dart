@@ -1,14 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import 'package:snack_over_vbt/core/init/router/router_page/router_navigation.gr.dart';
-import 'package:snack_over_vbt/feature/profile/view/modules/profile_settings/view/profile_settings_view.dart';
+import '../../../core/init/router/router_page/router_navigation.gr.dart';
+import '../../../product/utils/extension/capitaliaze_extension.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
-import '../../../core/init/theme/color/i_color.dart';
+import '../viewmodel/cubit/profile_cubit.dart';
 part '../view/subView/text_field.dart';
 part '../view/subView/comment_text.dart';
 part '../view/subView/comment_icon_number.dart';
@@ -25,115 +24,145 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Stack(
-        children: [
-          SizedBox(
-            width: context.width,
-            height: context.height,
-          ),
-          Stack(
-            children: [
-              Container(
-                width: context.width,
-                height: context.dynamicHeight(0.35),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      context.appTheme.colorScheme.primaryContainer,
-                      context.appTheme.colorScheme.secondaryContainer,
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 20,
-                top: 20,
-                child: backButton(context),
-              ),
-              Positioned.fill(
-                child: Padding(
-                  padding: context.verticalPaddingMedium,
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        profileImageCard(context,
-                            "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"),
-                            "https://yt3.ggpht.com/Ri_-Z2lzJA34shodzbi4eqE2KftIr5pke9E37e8i_iyy_9JlxcQJxPvXkeDZUttqraEfS-FA=s900-c-k-c0x00ffffff-no-rj"),
-
-                        profileNameText(context, "Mert Can Kıyak"),
-                        profileBiographyText(
-                            context, "Hi I'am Junior Developer"),
-                        Container(),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                right: 20,
-                top: 20,
-                child: profileMoreButton(
-                    context: context,
-                    onTap: () async {
-                      await context.router.push(ProfileSettingsViewRoute());
-                    }),
-                child: profileMoreButton(context),
-              ),
-            ],
-          ),
-          //
-          Positioned(
-            bottom: 0,
-            child: Container(
-              width: context.width,
-              height: context.dynamicHeight(0.60),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40)),
-                color: context.colorScheme.onTertiary,
-              ),
-              child: DefaultTabController(
-                length: 2,
-                child: Column(
-                  children: [
-                    TabBar(
-                      padding: context.verticalPaddingLow,
-                      labelPadding: const EdgeInsets.all(10),
-                      indicator: const UnderlineTabIndicator(
-                        borderSide: BorderSide(width: 3.0, color: Colors.amber),
-                        insets: EdgeInsets.symmetric(horizontal: 64.0),
-                      ),
-                      tabs: [
-                        Text(
-                          LocaleKeys.profile_myQuestionTitle.tr(),
-                          style: context.textTheme.headline5,
-                        ),
-                        Text(
-                          LocaleKeys.profile_myAnswerTitle.tr(),
-                          style: context.textTheme.headline5,
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      child: TabBarView(children: [
-                        //Tabpage 1
-                        _myQuestionTabPage(context),
-                        //Tabpage2
-                        _myAnswerTabpage(context),
-                      ]),
+    return BlocProvider<ProfileCubit>(
+      create: (context) => ProfileCubit(context),
+      child: BlocConsumer<ProfileCubit, ProfileState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return Scaffold(
+            body: SafeArea(
+              child: context.read<ProfileCubit>().isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(),
                     )
-                  ],
-                ),
-              ),
+                  : Stack(
+                      children: [
+                        SizedBox(
+                          width: context.width,
+                          height: context.height,
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: context.width,
+                              height: context.dynamicHeight(0.30),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    context
+                                        .appTheme.colorScheme.primaryContainer,
+                                    context.appTheme.colorScheme
+                                        .secondaryContainer,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
+                            ),
+                            Positioned.fill(
+                              child: Padding(
+                                padding: context.verticalPaddingMedium,
+                                child: Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      profileImageCard(
+                                          context,
+                                          context
+                                                  .read<ProfileCubit>()
+                                                  .userModel
+                                                  ?.photoUrl ??
+                                              "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"),
+                                      profileNameText(
+                                          context,
+                                          "${context.read<ProfileCubit>().userModel?.name} "
+                                                  .capitalize() +
+                                              "${context.read<ProfileCubit>().userModel?.surname}"
+                                                  .capitalize()),
+                                      profileBiographyText(
+                                          context,
+                                          context
+                                                  .read<ProfileCubit>()
+                                                  .userModel
+                                                  ?.email ??
+                                              ""),
+                                      Container(),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              right: 20,
+                              top: 20,
+                              child: profileMoreButton(
+                                  context: context,
+                                  onTap: () async {
+                                    await context.router
+                                        .push(ProfileSettingsViewRoute());
+                                  }),
+                            ),
+                          ],
+                        ),
+                        //
+                        Positioned(
+                          bottom: 0,
+                          child: Container(
+                            width: context.width,
+                            height: context.dynamicHeight(0.60),
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(40),
+                                  topRight: Radius.circular(40)),
+                              color: context.colorScheme.onTertiary,
+                            ),
+                            child: DefaultTabController(
+                              length: 2,
+                              child: Column(
+                                children: [
+                                  TabBar(
+                                    padding: context.verticalPaddingLow,
+                                    labelPadding: const EdgeInsets.all(10),
+                                    indicator: UnderlineTabIndicator(
+                                      borderSide: BorderSide(
+                                        width: 3.0,
+                                        color: context.colorScheme.error
+                                            .withOpacity(0.6),
+                                      ),
+                                      insets: EdgeInsets.symmetric(
+                                          horizontal: 64.0),
+                                    ),
+                                    tabs: [
+                                      Text(
+                                        LocaleKeys.profile_myQuestionTitle.tr(),
+                                        style: context.textTheme.headline5,
+                                      ),
+                                      Text(
+                                        LocaleKeys.profile_myAnswerTitle.tr(),
+                                        style: context.textTheme.headline5,
+                                      ),
+                                    ],
+                                  ),
+                                  Expanded(
+                                    child: TabBarView(children: [
+                                      //Tabpage 1
+                                      _myQuestionTabPage(context),
+                                      //Tabpage2
+                                      _myAnswerTabpage(context),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
@@ -143,33 +172,52 @@ class ProfileView extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: searchQuestionBar(context),
+          child: searchQuestionBar(
+              context, LocaleKeys.profile_searchQuestionTitle.tr()),
         ),
-        Card(
-          elevation: 10,
-          shape: RoundedRectangleBorder(
-            borderRadius: context.lowBorderRadius,
-          ),
-          child: Column(
-            children: [
-              commentText(context,
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+        SizedBox(
+          height: context.dynamicHeight(0.4),
+          child: Padding(
+            padding: context.paddingLow,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: context.read<ProfileCubit>().myQuestions?.length,
+              itemBuilder: (context, index) {
+                var question = context.read<ProfileCubit>().myQuestions?[index];
+                return Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: context.lowBorderRadius,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      likeButton(context),
-                      likeNumber(context),
-                      commentIconAndNumber(context),
+                      commentText(context, question?.questionContent ?? ""),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          // likeButton(context),
+                          // likeNumber(context),
+                          commentIconAndNumber(
+                              context: context,
+                              icon: Icons.star,
+                              countNumber: "12k"),
+
+                          commentIconAndNumber(
+                              context: context,
+                              icon: Icons.message_outlined,
+                              countNumber: "12k"),
+                          commentMoreButton(context)
+                        ],
+                      )
                     ],
                   ),
-                  commentMoreButton(context),
-                ],
-              )
-            ],
+                );
+              },
+            ),
           ),
-        ),
+        )
       ],
     );
   }
@@ -179,7 +227,8 @@ class ProfileView extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: searchAnswerBar(context),
+          child: searchQuestionBar(
+              context, LocaleKeys.profile_searchAnswerTitle.tr()),
         ),
         Card(
           elevation: 10,
@@ -191,14 +240,15 @@ class ProfileView extends StatelessWidget {
               commentText(context,
                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(children: [
-                    likeButton(context),
-                    likeNumber(context),
-                    commentIconAndNumber(context)
-                  ]),
-                  commentMoreButton(context),
+                  // likeButton(context),
+                  // likeNumber(context),
+                  commentIconAndNumber(
+                      context: context, icon: Icons.star, countNumber: "12k"),
+
+                  commentMoreButton(context)
                 ],
               )
             ],
