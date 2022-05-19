@@ -6,6 +6,7 @@ import 'package:snack_over_vbt/product/utils/extension/capitaliaze_extension.dar
 
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
+import '../../question_detail/view/question_detail_view.dart';
 import '../viewmodel/cubit/home_cubit.dart';
 
 part '../view/subView/comment_icon_number.dart';
@@ -24,7 +25,6 @@ class HomeView extends StatelessWidget {
       create: (context) => HomeCubit(context),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {
-          // TODO: implement listener
         },
         builder: (context, state) {
           var questionData = context.read<HomeCubit>().questionsList;
@@ -47,28 +47,55 @@ class HomeView extends StatelessWidget {
                       ),
                     )
                   : SliverList(
-                      delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-                      context.read<HomeCubit>().getUserQuestionImage(userId: questionData?[index].questionOwnerId);
-                      return Card(
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: context.lowBorderRadius,
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: context.paddingLow,
-                              child: titleOfTheCard(context,
-                                  imgUrl: context.read<HomeCubit>().questionImage?.photoUrl ??
-                                      'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
-                                  surname: "${context.read<HomeCubit>().questionImage?.surname}".capitalize(),
-                                  name: "${context.read<HomeCubit>().questionImage?.name}".capitalize()),
-                            ),
-                            commentText(context, questionData?[index].questionContent.toString().capitalize() ?? 'a'),
-                            Row(
-                              children: [likeButton(context), likeNumber(context), commentIconAndNumber(context)],
-                            )
-                          ],
+                      delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                      context.read<HomeCubit>().getUserQuestionImage(
+                          userId: questionData?[index].questionOwnerId);
+                      return InkWell(
+                        onTap: () {
+                          context.navigateToPage(QuestionDetailView(
+                            question: questionData![index],
+                            user: context.read<HomeCubit>().questionImage!,
+                          ));
+                        },
+                        child: Card(
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: context.lowBorderRadius,
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: context.paddingLow,
+                                child: titleOfTheCard(context,
+                                    imgUrl: context
+                                            .read<HomeCubit>()
+                                            .questionImage
+                                            ?.photoUrl ??
+                                        'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
+                                    surname:
+                                        "${context.read<HomeCubit>().questionImage?.surname}"
+                                            .capitalize(),
+                                    name:
+                                        "${context.read<HomeCubit>().questionImage?.name}"
+                                            .capitalize()),
+                              ),
+                              commentText(
+                                  context,
+                                  questionData?[index]
+                                          .questionContent
+                                          .toString()
+                                          .capitalize() ??
+                                      'a'),
+                              Row(
+                                children: [
+                                  likeButton(context),
+                                  likeNumber(context),
+                                  commentIconAndNumber(context)
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       );
                     }, childCount: questionData?.length))
@@ -88,8 +115,10 @@ class HomeView extends StatelessWidget {
         child: Container(
           height: context.dynamicHeight(0.1),
           width: context.dynamicWidth(0.2),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
-          child: Icon(Icons.notification_add, color: context.appTheme.colorScheme.onSecondary),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
+          child: Icon(Icons.notification_add,
+              color: context.appTheme.colorScheme.onSecondary),
         ),
       ),
       actions: [

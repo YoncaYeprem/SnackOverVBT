@@ -13,8 +13,10 @@ class FirebaseStorageFunctions {
   String? uploadPath;
 
   Future<String?> saveImageToFirebaseCloud({XFile? imagePath}) async {
-    String uploadFileName = DateTime.now().microsecondsSinceEpoch.toString() + '.jpg';
-    Reference reference = storage.ref().child("questionImages").child(uploadFileName);
+    String uploadFileName =
+        DateTime.now().microsecondsSinceEpoch.toString() + '.jpg';
+    Reference reference =
+        storage.ref().child("questionImages").child(uploadFileName);
     UploadTask uploadTask = reference.putFile(File(imagePath!.path));
 
     await uploadTask.whenComplete(() async {
@@ -29,7 +31,10 @@ class FirebaseStorageFunctions {
   }
 
   Future saveUserToFirestore({required UserModel userModel}) async {
-    await firestore.collection("profile").doc(userModel.userId).set(userModel.toJson());
+    await firestore
+        .collection("profile")
+        .doc(userModel.userId)
+        .set(userModel.toJson());
   }
 
   Future getUserDatas({String? userId}) async {
@@ -40,11 +45,24 @@ class FirebaseStorageFunctions {
 
   Future getAllQuestionsFromFirebase() async {
     List<QuestionModel> allData = [];
-    CollectionReference<Map<String, dynamic>> _collectionRef = FirebaseFirestore.instance.collection('questions');
-    QuerySnapshot<Map<String, dynamic>> querySnapshot = await _collectionRef.get();
+    CollectionReference<Map<String, dynamic>> _collectionRef =
+        FirebaseFirestore.instance.collection('questions');
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await _collectionRef.get();
     querySnapshot.docs.forEach((element) {
       allData.add(QuestionModel().fromJson(element.data()));
     });
     return allData;
+  }
+
+  updateOneFieldFromStore(
+      {required String collectionName,
+      required String docId,
+      required String fieldName,
+      required dynamic updatedField}) async {
+    await firestore
+        .collection(collectionName)
+        .doc(docId)
+        .update({fieldName: FieldValue.arrayUnion([updatedField])});
   }
 }

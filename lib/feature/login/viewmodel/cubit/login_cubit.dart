@@ -31,8 +31,8 @@ class LoginCubit extends Cubit<LoginState> {
   UserModel? user;
 
   Future signUpWithEmailPassword() async {
-    UserCredential credential =
-        await AuthFunctions().signUpUserWithEmail(email: emailController.text, password: passwordController.text);
+    UserCredential credential = await AuthFunctions().signUpUserWithEmail(
+        email: emailController.text, password: passwordController.text);
     if (credential != null) {
       userId = credential.user!.uid;
     }
@@ -43,11 +43,14 @@ class LoginCubit extends Cubit<LoginState> {
         surname: surnameController.text,
         email: emailController.text,
         password: passwordController.text,
-        photoUrl: ImageConstants.instance.person);
+        photoUrl: "");
 
     if (user != null) {
-      await FirebaseStorageFunctions().saveUserToFirestore(userModel: user!).then((value) {
+      await FirebaseStorageFunctions()
+          .saveUserToFirestore(userModel: user!)
+          .then((value) {
         context.navigateToPage(BottomNavBar());
+        keepUserData(user!);
       }).catchError((onError) {
         print("hata");
       });
@@ -58,7 +61,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future signInWithEmailPassword() async {
     userModel = LoginModel(emailController.text, passwordController.text);
-    User? response = await AuthFunctions().signInEmailPassword(userModel, context);
+    User? response =
+        await AuthFunctions().signInEmailPassword(userModel, context);
     if (response != null) {
       keepTokenData(response.uid);
       if (response.uid.isNotEmpty) {
@@ -73,6 +77,7 @@ class LoginCubit extends Cubit<LoginState> {
     User? user = await AuthFunctions().signInGoogle(context);
     if (user != null) {
       keepTokenData(user.uid);
+
       if (user.uid.isNotEmpty) {
         context.navigateToPage(HomeView());
       } else {
@@ -80,9 +85,17 @@ class LoginCubit extends Cubit<LoginState> {
       }
     }
   }
+}
+
+extension _LoginCache on LoginCubit {
+  Future keepUserData(UserModel user) async {
+    await LocaleStorageManager.instance.setDynamicJson(StorageKeys.user, user);
+    context.read<LocaleManager>().saveUser(user);
+  }
 
   Future keepTokenData(String token) async {
-    await LocaleStorageManager.instance.setStringValue(StorageKeys.token, token);
+    await LocaleStorageManager.instance
+        .setStringValue(StorageKeys.token, token);
     context.read<LocaleManager>().saveToken(token);
   }
 }

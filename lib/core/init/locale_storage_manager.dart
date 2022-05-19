@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vexana/vexana.dart';
 
 class LocaleStorageManager {
   static final LocaleStorageManager _instance = LocaleStorageManager._init();
@@ -52,6 +55,18 @@ class LocaleStorageManager {
 
   setList(List<String> company) {
     _preferences!.setStringList(StorageKeys.companyList.toString(), company);
+  }
+
+  Future<void> setDynamicJson<T>(StorageKeys key, T model) async {
+    await _preferences?.setString(key.toString(), jsonEncode(model));
+  }
+
+  T getDynamicValue<T extends dynamic>(StorageKeys key, T model) {
+    final body = getStringValue(key);
+    if (body.isNotEmpty) {
+      return model.fromJson(jsonDecode(body));
+    }
+    return model;
   }
 
   List<String> getList(StorageKeys key) {
