@@ -24,10 +24,14 @@ extension ProfileMoreButton on ProfileView {
       ),
     );
   }
+
   IconButton commentMoreButton(BuildContext context) {
     return IconButton(
       onPressed: (() {}),
-      icon: const Icon(Icons.more_vert),
+      icon: Icon(
+        Icons.delete_forever,
+        color: context.colorScheme.error.withOpacity(0.6),
+      ),
     );
   }
 }

@@ -6,8 +6,9 @@ extension CommentText on ProfileView {
       padding: context.paddingNormal,
       child: Text(
         questionContent,
+        textAlign: TextAlign.left,
         maxLines: 3, // TODO 3 noktalı yapıcak
-        style: context.textTheme.headline6,
+        style: context.textTheme.headline5,
       ),
     );
   }

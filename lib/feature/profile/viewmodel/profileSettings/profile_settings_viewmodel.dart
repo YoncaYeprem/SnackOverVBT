@@ -1,13 +1,18 @@
+import 'package:flutter/material.dart';
+
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snack_over_vbt/core/init/locale/locale_manager.dart';
+import '../../../../core/init/locale/locale_manager.dart';
+
+import '../../../login/model/user_model.dart';
 
 class ProfileSettingsCubit extends Cubit<ProfileSettingsState> {
-  ProfileSettingsCubit(this.myContext) : super(ProfileSettingsInitial());
+  ProfileSettingsCubit(this.myContext) : super(ProfileSettingsInitial()) {
+  }
 
   Locale? appLocale = LanguageManager.instance!.trLocale;
   BuildContext myContext;
+  UserModel? userModel;
 
   void changeLanguage(Locale? locale) {
     if (locale != null) {
@@ -15,6 +20,8 @@ class ProfileSettingsCubit extends Cubit<ProfileSettingsState> {
       emit(ProfileChangeLanguage());
     }
   }
+
+  
 }
 
 abstract class ProfileSettingsState {}

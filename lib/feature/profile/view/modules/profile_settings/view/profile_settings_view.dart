@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import 'package:snack_over_vbt/feature/profile/view/profile_view.dart';
-import 'package:snack_over_vbt/feature/profile/viewmodel/profileSettings/profile_settings_viewmodel.dart';
+import '../../../profile_view.dart';
+import '../../../../viewmodel/profileSettings/profile_settings_viewmodel.dart';
 import '../../../../../../core/init/lang/locale_keys.g.dart';
 import '../../../../../../core/init/locale/locale_manager.dart';
 

@@ -8,3 +8,4 @@ class HomeInitial extends HomeState {}
 class HomeGetDatas extends HomeState {}
 
 class HomeGetImage extends HomeState {}
+class HomeGetUser extends HomeState {}
