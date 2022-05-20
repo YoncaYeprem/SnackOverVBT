@@ -13,10 +13,8 @@ class FirebaseStorageFunctions {
   String? uploadPath;
 
   Future<String?> saveImageToFirebaseCloud({XFile? imagePath}) async {
-    String uploadFileName =
-        DateTime.now().microsecondsSinceEpoch.toString() + '.jpg';
-    Reference reference =
-        storage.ref().child("questionImages").child(uploadFileName);
+    String uploadFileName = DateTime.now().microsecondsSinceEpoch.toString() + '.jpg';
+    Reference reference = storage.ref().child("questionImages").child(uploadFileName);
     UploadTask uploadTask = reference.putFile(File(imagePath!.path));
 
     await uploadTask.whenComplete(() async {
@@ -31,10 +29,7 @@ class FirebaseStorageFunctions {
   }
 
   Future saveUserToFirestore({required UserModel userModel}) async {
-    await firestore
-        .collection("profile")
-        .doc(userModel.userId)
-        .set(userModel.toJson());
+    await firestore.collection("profile").doc(userModel.userId).set(userModel.toJson());
   }
 
   Future getUserDatas({String? userId}) async {
@@ -45,10 +40,8 @@ class FirebaseStorageFunctions {
 
   Future getAllQuestionsFromFirebase() async {
     List<QuestionModel> allData = [];
-    CollectionReference<Map<String, dynamic>> _collectionRef =
-        FirebaseFirestore.instance.collection('questions');
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await _collectionRef.get();
+    CollectionReference<Map<String, dynamic>> _collectionRef = FirebaseFirestore.instance.collection('questions');
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await _collectionRef.get();
     querySnapshot.docs.forEach((element) {
       allData.add(QuestionModel().fromJson(element.data()));
     });
@@ -58,11 +51,7 @@ class FirebaseStorageFunctions {
   Future getUserOwnQuestions({String? userId}) async {
     List<QueryDocumentSnapshot<Map<String, dynamic>>>? docs;
     List<QuestionModel> allMyQuestions = [];
-    await firestore
-        .collection('questions')
-        .where("questionOwnerId", isEqualTo: userId)
-        .get()
-        .then((query) {
+    await firestore.collection('questions').where("questionOwnerId", isEqualTo: userId).get().then((query) {
       docs = query.docs;
     });
     docs?.forEach((element) {
@@ -73,20 +62,18 @@ class FirebaseStorageFunctions {
 
   Future getUserOwnAnswers({String? userId}) async {
     List<QueryDocumentSnapshot<Map<String, dynamic>>>? docs;
-    List<QuestionModel> allMyAnswers = [];
-    await firestore
-        .collection('questions')
-        .where("comments", arrayContains: {"userId": userId})
-        .get()
-        .then((query) {
-          docs = query.docs;
-        });
 
-    print("uzunnn  ${docs?.length}");
-    //docs?.map((question) => allMyQuestions.add(QuestionModel().fromJson(question)));
-    // docs?.forEach((element) {
-    //   allMyAnswers.add(QuestionModel().fromJson(element.data()));
-    // // });
-    // return allMyAnswers;
+    List allMyAnswers = [];
+    var response = await firestore.collection("questions").get().then((value) {
+      for (var i = 0; i < value.docs.length; i++) {
+        var number = value.docs[i].data()["comments"] as List;
+        for (var j = 0; j < number.length; j++) {
+          if (value.docs[i].data()["comments"][j]["userId"] == userId) {
+            var allMyAnswers = value.docs[i].data()["comments"][j]["userId"];
+            print("uzunnn1  ${allMyAnswers}");
+          }
+        }
+      }
+    });
   }
 }

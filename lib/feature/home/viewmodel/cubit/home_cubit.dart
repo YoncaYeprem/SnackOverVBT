@@ -29,8 +29,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<List<QuestionModel>?> getAllQuestions() async {
-    questionsList =
-        await FirebaseStorageFunctions().getAllQuestionsFromFirebase();
+    questionsList = await FirebaseStorageFunctions().getAllQuestionsFromFirebase();
     LocaleManager().saveQuestionModel(questionsList);
 
     emit(HomeGetDatas());
@@ -39,18 +38,17 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<UserModel?>? getUserHomeImage() async {
-    userImage = await FirebaseStorageFunctions()
-        .getUserDatas(userId: context.read<LocaleManager>().token ?? '');
+    userImage = await FirebaseStorageFunctions().getUserDatas(userId: context.read<LocaleManager>().token ?? '');
     emit(HomeGetUser());
     return userImage;
   }
 
-  Future<UserModel?>? getUserQuestionImage({String? userId}) async {
+  /*  Future<UserModel?>? getUserQuestionImage({String? userId}) async {
     questionImage =
         await FirebaseStorageFunctions().getUserDatas(userId: userId);
     emit(HomeGetImage());
     return questionImage;
-  }
+  } */
 
   void changeLoading() {
     isLoading = !isLoading;

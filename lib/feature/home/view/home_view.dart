@@ -47,10 +47,9 @@ class HomeView extends StatelessWidget {
                       ),
                     )
                   : SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                      context.read<HomeCubit>().getUserQuestionImage(
-                          userId: questionData?[index].questionOwnerId);
+                      delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+                      /* context.read<HomeCubit>().getUserQuestionImage(
+                          userId: questionData?[index].questionOwnerId); */
                       return Card(
                         elevation: 10,
                         shape: RoundedRectangleBorder(
@@ -61,31 +60,14 @@ class HomeView extends StatelessWidget {
                             Padding(
                               padding: context.paddingLow,
                               child: titleOfTheCard(context,
-                                  imgUrl: context
-                                          .read<HomeCubit>()
-                                          .questionImage
-                                          ?.photoUrl ??
+                                  imgUrl: context.read<HomeCubit>().questionImage?.photoUrl ??
                                       'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
-                                  surname:
-                                      "${context.read<HomeCubit>().questionImage?.surname}"
-                                          .capitalize(),
-                                  name:
-                                      "${context.read<HomeCubit>().questionImage?.name}"
-                                          .capitalize()),
+                                  surname: "${context.read<HomeCubit>().questionImage?.surname}".capitalize(),
+                                  name: "${context.read<HomeCubit>().questionImage?.name}".capitalize()),
                             ),
-                            commentText(
-                                context,
-                                questionData?[index]
-                                        .questionContent
-                                        .toString()
-                                        .capitalize() ??
-                                    'a'),
+                            commentText(context, questionData?[index].questionContent.toString().capitalize() ?? 'a'),
                             Row(
-                              children: [
-                                likeButton(context),
-                                likeNumber(context),
-                                commentIconAndNumber(context)
-                              ],
+                              children: [likeButton(context), likeNumber(context), commentIconAndNumber(context)],
                             )
                           ],
                         ),
@@ -107,10 +89,8 @@ class HomeView extends StatelessWidget {
         child: Container(
           height: context.dynamicHeight(0.1),
           width: context.dynamicWidth(0.2),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
-          child: Icon(Icons.notification_add,
-              color: context.appTheme.colorScheme.onSecondary),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
+          child: Icon(Icons.notification_add, color: context.appTheme.colorScheme.onSecondary),
         ),
       ),
       actions: [
