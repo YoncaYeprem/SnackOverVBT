@@ -34,9 +34,10 @@ class LightColor implements IColorTheme {
       onSecondary: colors.darkPinkColor,
       background: colors.darkGrey,
       outline: colors.softGrey,
-      primaryContainer: colors.lightPurple,
-      secondaryContainer: colors.darkPurple,
-      onTertiary: colors.profileTabBackground,
+      primaryContainer: colors.pinkColor,
+      secondaryContainer: colors.purpleColor,
+      onTertiary: colors.profileTabBackgroundColor,
+      onBackground: colors.lightAppbarColor,
     );
   }
 }

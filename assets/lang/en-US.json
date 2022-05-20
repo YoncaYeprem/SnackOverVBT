@@ -52,6 +52,10 @@
     "profileSettings":{
         "settings":"Settings",
         "languageChangeTitle":"Language Change",
-        "languageChangeSubtitle":"You can change application language"
+        "languageChangeSubtitle":"You can change application language",
+        "themeChangeTitle":"Theme Change",
+        "themeChangeSubtitle":"You can change application theme",
+        "themeDark":"Dark",
+        "themeLight":"Light"
     }
 }

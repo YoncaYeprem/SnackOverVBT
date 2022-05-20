@@ -59,9 +59,12 @@ class LocaleStorageManager {
     return list;
   }
 
-  String getStringValue(StorageKeys key) => _preferences!.getString(key.toString()) ?? '';
-  bool getBoolValue(StorageKeys key) => _preferences!.getBool(key.toString()) ?? true;
-  int getIntegerValue(StorageKeys key) => _preferences!.getInt(key.toString()) ?? 0;
+  String getStringValue(StorageKeys key) =>
+      _preferences!.getString(key.toString()) ?? '';
+  bool getBoolValue(StorageKeys key) =>
+      _preferences!.getBool(key.toString()) ?? true;
+  int getIntegerValue(StorageKeys key) =>
+      _preferences!.getInt(key.toString()) ?? 0;
   bool contains(StorageKeys key) => _preferences!.containsKey(key.toString());
 }
 
@@ -71,4 +74,5 @@ enum StorageKeys {
   firstLoginApp,
   user,
   companyList,
+  themeLight,
 }

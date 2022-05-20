@@ -45,5 +45,10 @@ abstract class  LocaleKeys {
   static const profileSettings_settings = 'profileSettings.settings';
   static const profileSettings_languageChangeTitle = 'profileSettings.languageChangeTitle';
   static const profileSettings_languageChangeSubtitle = 'profileSettings.languageChangeSubtitle';
+  static const profileSettings_themeChangeTitle = 'profileSettings.themeChangeTitle';
+  static const profileSettings_themeChangeSubtitle = 'profileSettings.themeChangeSubtitle';
+  static const profileSettings_themeDark = 'profileSettings.themeDark';
+  static const profileSettings_themeLight = 'profileSettings.themeLight';
   static const profileSettings = 'profileSettings';
+
 }

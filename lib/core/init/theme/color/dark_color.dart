@@ -32,6 +32,11 @@ class DarkColor implements IColorTheme {
       onSurface: colors.backgroundColor,
       onSecondary: colors.darkPinkColor,
       background: colors.darkGrey,
+      outline: colors.softGrey,
+      primaryContainer: colors.darkPink,
+      secondaryContainer: colors.darkPurpleColor,
+      onTertiary: colors.profileTabBackgroundDarkColor,
+      onBackground: colors.darkAppbarColor,
     );
   }
 }
