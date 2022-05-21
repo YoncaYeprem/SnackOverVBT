@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/init/theme/color/i_color.dart';
-import '../../login/view/login.dart';
-import '../model/onboard_model.dart';
 import 'package:kartal/kartal.dart';
+
 import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/theme/color/i_color.dart';
+import '../model/onboard_model.dart';
 import '../viewmodel/cubit/onboard_cubit.dart';
 
 class OnboardView extends StatelessWidget {

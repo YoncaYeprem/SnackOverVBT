@@ -1,20 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kartal/kartal.dart';
-import '../../../core/init/lang/locale_keys.g.dart';
-import '../../../product/utils/login/password_input_field.dart';
 
 import '../../../core/constants/image_constants.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../product/component/circle_button.dart';
 import '../../../product/utils/login/email_input_field.dart';
-import '../../../product/component/firebase/auth_functions.dart';
 import '../../../product/utils/login/name_input_field.dart';
+import '../../../product/utils/login/password_input_field.dart';
 import '../viewmodel/cubit/login_cubit.dart';
-part 'subView/signup_view.dart';
+
 part 'subView/signin_view.dart';
+part 'subView/signup_view.dart';
 
 class LoginView extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey();

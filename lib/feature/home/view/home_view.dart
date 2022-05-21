@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import '../../../product/utils/extension/capitaliaze_extension.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
+import '../../../product/utils/extension/capitaliaze_extension.dart';
 import '../viewmodel/cubit/home_cubit.dart';
 
 part '../view/subView/comment_icon_number.dart';
