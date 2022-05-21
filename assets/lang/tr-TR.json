@@ -56,7 +56,9 @@
         "themeChangeTitle":"Temayı Değiştir",
         "themeChangeSubtitle":"Uygulama temasını değiştirebilirsiniz",
         "themeDark":"Koyu",
-        "themeLight":"Açık"
-
+        "themeLight":"Açık",
+        "forgetPassword":"Şifremi Sıfırla",
+        "forgetPasswordExplain":"Kolaylıkla şifrenizi değiştirebilirsiniz.",
+        "logout":"Çıkış Yap"
     }
 }

@@ -9,28 +9,33 @@ class AuthFunctions {
   final GoogleSignIn googleSignIn = GoogleSignIn();
   User? user;
 
-  Future signUpUserWithEmail({required String email,required String password}) async{
+  Future signUpUserWithEmail({required String email, required String password}) async {
     try {
-      UserCredential credential = await auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password);
-    return credential;
+      UserCredential credential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+      return credential;
     } on FirebaseAuthException catch (e) {
-      //TODO: make some error 
+      //TODO: make some error
       print(e.code);
     }
   }
 
+  Future resetPassword() async {
+    await auth.sendPasswordResetEmail(email: auth.currentUser?.email ?? "");
+  }
+
+  Future logoutUser() async {
+    await auth.signOut();
+  }
+
   Future<User?> signInEmailPassword(LoginModel? userModel, BuildContext context) async {
     try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-          email: userModel?.email ?? '', password: userModel?.password ?? '');
+      UserCredential userCredential =
+          await auth.signInWithEmailAndPassword(email: userModel?.email ?? '', password: userModel?.password ?? '');
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
         if (context != null) {
-        _sendSnacMessage(context, 'User Not Found');
-
+          _sendSnacMessage(context, 'User Not Found');
         }
       }
     }
@@ -38,12 +43,10 @@ class AuthFunctions {
   }
 
   Future<User?> signInGoogle(BuildContext context) async {
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
 
     if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
@@ -51,15 +54,13 @@ class AuthFunctions {
       );
 
       try {
-        final UserCredential userCredential =
-            await auth.signInWithCredential(credential);
+        final UserCredential userCredential = await auth.signInWithCredential(credential);
 
         user = userCredential.user;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           // handle the error here
-        }
-        else if (e.code == 'invalid-credential') {
+        } else if (e.code == 'invalid-credential') {
           // handle the error here
         }
       } catch (e) {
@@ -71,7 +72,6 @@ class AuthFunctions {
   }
 
   void _sendSnacMessage(BuildContext context, String message) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 }

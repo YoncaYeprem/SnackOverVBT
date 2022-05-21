@@ -29,23 +29,16 @@ class ProfileCubit extends Cubit<ProfileState> {
     changeLoading();
     await getUserDatasFromFirebase();
     await getUserQuestionsFromFirebase();
-    await getUserAnswersFromFirebase();
     changeLoading();
   }
 
   Future<void> getUserDatasFromFirebase() async {
-    userModel = await FirebaseStorageFunctions()
-        .getUserDatas(userId: context.read<LocaleManager>().token);
+    userModel = await FirebaseStorageFunctions().getUserDatas(userId: context.read<LocaleManager>().token);
   }
 
   Future<void> getUserQuestionsFromFirebase() async {
-    myQuestions = await FirebaseStorageFunctions()
-        .getUserOwnQuestions(userId: context.read<LocaleManager>().token);
+    myQuestions = await FirebaseStorageFunctions().getUserOwnQuestions(userId: context.read<LocaleManager>().token);
   }
 
-  Future<void> getUserAnswersFromFirebase() async {
-    final response = await FirebaseStorageFunctions()
-        .getUserOwnAnswers(userId: context.read<LocaleManager>().token);
-
-  }
+  
 }

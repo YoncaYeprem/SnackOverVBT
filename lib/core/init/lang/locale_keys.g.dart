@@ -49,6 +49,9 @@ abstract class  LocaleKeys {
   static const profileSettings_themeChangeSubtitle = 'profileSettings.themeChangeSubtitle';
   static const profileSettings_themeDark = 'profileSettings.themeDark';
   static const profileSettings_themeLight = 'profileSettings.themeLight';
+  static const profileSettings_forgetPassword = 'profileSettings.forgetPassword';
+  static const profileSettings_forgetPasswordExplain = 'profileSettings.forgetPasswordExplain';
+  static const profileSettings_logout = 'profileSettings.logout';
   static const profileSettings = 'profileSettings';
 
 }
