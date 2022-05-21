@@ -44,6 +44,10 @@ class LocaleStorageManager {
     await _preferences!.setString(key.toString(), value);
   }
 
+  Future<void> removeKey(StorageKeys key) async {
+    await _preferences!.remove(key.toString());
+  }
+
   Future<void> setIntegerValue(StorageKeys key, int value) async {
     await _preferences!.setInt(key.toString(), value);
   }

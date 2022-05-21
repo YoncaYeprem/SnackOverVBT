@@ -56,6 +56,9 @@
         "themeChangeTitle":"Theme Change",
         "themeChangeSubtitle":"You can change application theme",
         "themeDark":"Dark",
-        "themeLight":"Light"
+        "themeLight":"Light",
+        "forgetPassword":"Reset Password",
+        "forgetPasswordExplain":"You can easily change password",
+        "logout":"Logout"
     }
 }
