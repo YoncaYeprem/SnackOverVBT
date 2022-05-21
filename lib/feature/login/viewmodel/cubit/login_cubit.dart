@@ -49,10 +49,10 @@ class LoginCubit extends Cubit<LoginState> {
       await FirebaseStorageFunctions()
           .saveUserToFirestore(userModel: user!)
           .then((value) {
-        context.navigateToPage(BottomNavBar());
+        context.navigateToPage(const BottomNavBar());
         keepUserData(user!);
       }).catchError((onError) {
-        print("hata");
+        //TODO: make some handle operations
       });
     }
 
@@ -66,7 +66,7 @@ class LoginCubit extends Cubit<LoginState> {
     if (response != null) {
       keepTokenData(response.uid);
       if (response.uid.isNotEmpty) {
-        context.navigateToPage(BottomNavBar());
+        context.navigateToPage(const BottomNavBar());
       } else {
         //TODO: Giriş başarısız yönlendirmesi
       }

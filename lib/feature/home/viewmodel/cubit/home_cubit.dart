@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:snack_over_vbt/core/init/localStorage/storage.dart';
-import 'package:snack_over_vbt/core/init/locale_storage_manager.dart';
 import 'package:snack_over_vbt/feature/login/model/user_model.dart';
 import 'package:provider/provider.dart';
 

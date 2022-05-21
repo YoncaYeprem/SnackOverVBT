@@ -18,7 +18,7 @@ extension AppBarExtension on QuestionDetailView {
         CircleAvatar(
             radius: 20,
             backgroundImage: NetworkImage(
-              user?.photoUrl ??
+              user.photoUrl ??
                   'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
             )),
         Padding(
@@ -27,12 +27,12 @@ extension AppBarExtension on QuestionDetailView {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "${user?.name} ".capitalize() + "${user?.surname}".capitalize(),
+                "${user.name} ".capitalize() + "${user.surname}".capitalize(),
                 style: context.textTheme.headline5
                     ?.copyWith(fontWeight: FontWeight.bold),
               ),
               Text(
-                "${question?.questionCategory?[0]} ".capitalize(),
+                "${question.questionCategory?[0]} ".capitalize(),
                 style: context.textTheme.headline5,
               ),
             ],

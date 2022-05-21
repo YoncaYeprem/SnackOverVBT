@@ -8,7 +8,7 @@ extension CommentBoxExtension on QuestionDetailView {
         CircleAvatar(
             radius: 25,
             backgroundImage: NetworkImage(
-              user?.photoUrl ??
+              user.photoUrl ??
                   'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
             )),
         Expanded(
@@ -20,8 +20,8 @@ extension CommentBoxExtension on QuestionDetailView {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${user?.name} ".capitalize() +
-                        "${user?.surname}".capitalize(),
+                    "${user.name} ".capitalize() +
+                        "${user.surname}".capitalize(),
                     style: context.textTheme.headlineSmall
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
