@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import '../../../core/init/locale_storage_manager.dart';
 import '../../../core/init/router/router_page/router_navigation.gr.dart';
+import '../../../product/utils/enums/theme_info_enum.dart';
 import '../../../product/utils/extension/capitaliaze_extension.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
@@ -49,10 +51,8 @@ class ProfileView extends StatelessWidget {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    context
-                                        .appTheme.colorScheme.primaryContainer,
-                                    context.appTheme.colorScheme
-                                        .secondaryContainer,
+                                    context.appTheme.colorScheme.primaryContainer,
+                                    context.appTheme.colorScheme.secondaryContainer,
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -65,29 +65,18 @@ class ProfileView extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.topCenter,
                                   child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       profileImageCard(
                                           context,
-                                          context
-                                                  .read<ProfileCubit>()
-                                                  .userModel
-                                                  ?.photoUrl ??
+                                          context.read<ProfileCubit>().userModel?.photoUrl ??
                                               "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"),
                                       profileNameText(
                                           context,
-                                          "${context.read<ProfileCubit>().userModel?.name} "
-                                                  .capitalize() +
-                                              "${context.read<ProfileCubit>().userModel?.surname}"
-                                                  .capitalize()),
+                                          "${context.read<ProfileCubit>().userModel?.name} ".capitalize() +
+                                              "${context.read<ProfileCubit>().userModel?.surname}".capitalize()),
                                       profileBiographyText(
-                                          context,
-                                          context
-                                                  .read<ProfileCubit>()
-                                                  .userModel
-                                                  ?.email ??
-                                              ""),
+                                          context, context.read<ProfileCubit>().userModel?.email ?? ""),
                                       Container(),
                                     ],
                                   ),
@@ -100,8 +89,7 @@ class ProfileView extends StatelessWidget {
                               child: profileMoreButton(
                                   context: context,
                                   onTap: () async {
-                                    await context.router
-                                        .push(ProfileSettingsViewRoute());
+                                    await context.router.push(ProfileSettingsViewRoute());
                                   }),
                             ),
                           ],
@@ -113,9 +101,8 @@ class ProfileView extends StatelessWidget {
                             width: context.width,
                             height: context.dynamicHeight(0.65),
                             decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(40),
-                                  topRight: Radius.circular(40)),
+                              borderRadius:
+                                  const BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
                               color: context.colorScheme.onTertiary,
                             ),
                             child: DefaultTabController(
@@ -128,11 +115,9 @@ class ProfileView extends StatelessWidget {
                                     indicator: UnderlineTabIndicator(
                                       borderSide: BorderSide(
                                         width: 3.0,
-                                        color: context.colorScheme.error
-                                            .withOpacity(0.6),
+                                        color: context.colorScheme.error.withOpacity(0.6),
                                       ),
-                                      insets: EdgeInsets.symmetric(
-                                          horizontal: 64.0),
+                                      insets: EdgeInsets.symmetric(horizontal: 64.0),
                                     ),
                                     tabs: [
                                       Text(
@@ -172,8 +157,7 @@ class ProfileView extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: searchQuestionBar(
-              context, LocaleKeys.profile_searchQuestionTitle.tr()),
+          child: searchQuestionBar(context, LocaleKeys.profile_searchQuestionTitle.tr()),
         ),
         SizedBox(
           height: context.dynamicHeight(0.4),
@@ -199,18 +183,12 @@ class ProfileView extends StatelessWidget {
                         children: [
                           // likeButton(context),
                           // likeNumber(context),
-                          commentIconAndNumber(
-                              context: context,
-                              icon: Icons.star,
-                              countNumber: "12k"),
+                          commentIconAndNumber(context: context, icon: Icons.star, countNumber: "12k"),
 
-                          commentIconAndNumber(
-                              context: context,
-                              icon: Icons.message_outlined,
-                              countNumber: "12k"),
+                          commentIconAndNumber(context: context, icon: Icons.message_outlined, countNumber: "12k"),
                           commentMoreButton(context)
                         ],
-                      )
+                      ),
                     ],
                   ),
                 );
@@ -227,8 +205,7 @@ class ProfileView extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: searchQuestionBar(
-              context, LocaleKeys.profile_searchAnswerTitle.tr()),
+          child: searchQuestionBar(context, LocaleKeys.profile_searchAnswerTitle.tr()),
         ),
         Card(
           elevation: 10,
@@ -245,8 +222,7 @@ class ProfileView extends StatelessWidget {
                 children: [
                   // likeButton(context),
                   // likeNumber(context),
-                  commentIconAndNumber(
-                      context: context, icon: Icons.star, countNumber: "12k"),
+                  commentIconAndNumber(context: context, icon: Icons.star, countNumber: "12k"),
 
                   commentMoreButton(context)
                 ],
