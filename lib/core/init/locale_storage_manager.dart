@@ -1,5 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../product/utils/enums/theme_info_enum.dart';
+
 class LocaleStorageManager {
   static final LocaleStorageManager _instance = LocaleStorageManager._init();
 
@@ -63,13 +65,18 @@ class LocaleStorageManager {
     return list;
   }
 
-  String getStringValue(StorageKeys key) =>
-      _preferences!.getString(key.toString()) ?? '';
-  bool getBoolValue(StorageKeys key) =>
-      _preferences!.getBool(key.toString()) ?? true;
-  int getIntegerValue(StorageKeys key) =>
-      _preferences!.getInt(key.toString()) ?? 0;
+  String getStringValue(StorageKeys key) => _preferences!.getString(key.toString()) ?? '';
+  bool getBoolValue(StorageKeys key) => _preferences!.getBool(key.toString()) ?? true;
+  int getIntegerValue(StorageKeys key) => _preferences!.getInt(key.toString()) ?? 0;
   bool contains(StorageKeys key) => _preferences!.containsKey(key.toString());
+
+  Future<void> setTheme(ThemeInfo val) async {
+    await _preferences!.setInt(StorageKeys.theme.toString(), val.index);
+  }
+
+  Future reload() async {
+    await _preferences!.reload();
+  }
 }
 
 enum StorageKeys {
@@ -78,5 +85,5 @@ enum StorageKeys {
   firstLoginApp,
   user,
   companyList,
-  themeLight,
+  theme,
 }
