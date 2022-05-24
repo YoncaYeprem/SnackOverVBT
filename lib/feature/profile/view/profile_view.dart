@@ -181,10 +181,7 @@ class ProfileView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          // likeButton(context),
-                          // likeNumber(context),
                           commentIconAndNumber(context: context, icon: Icons.star, countNumber: "12k"),
-
                           commentIconAndNumber(context: context, icon: Icons.message_outlined, countNumber: "12k"),
                           commentMoreButton(context)
                         ],
@@ -207,27 +204,38 @@ class ProfileView extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: searchQuestionBar(context, LocaleKeys.profile_searchAnswerTitle.tr()),
         ),
-        Card(
-          elevation: 10,
-          shape: RoundedRectangleBorder(
-            borderRadius: context.lowBorderRadius,
-          ),
-          child: Column(
-            children: [
-              commentText(context,
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // likeButton(context),
-                  // likeNumber(context),
-                  commentIconAndNumber(context: context, icon: Icons.star, countNumber: "12k"),
-
-                  commentMoreButton(context)
-                ],
-              )
-            ],
+        SizedBox(
+          height: context.dynamicHeight(0.4),
+          child: Padding(
+            padding: context.paddingLow,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: context.read<ProfileCubit>().myAnswers?.length,
+              itemBuilder: (context, index) {
+                var answer = context.read<ProfileCubit>().myAnswers?[index];
+                return Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: context.lowBorderRadius,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      commentText(context, answer?.commentContent ?? ""),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          commentIconAndNumber(context: context, icon: Icons.star, countNumber: "12k"),
+                          commentIconAndNumber(context: context, icon: Icons.message_outlined, countNumber: "12k"),
+                          commentMoreButton(context)
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ],
@@ -254,7 +262,3 @@ class ProfileView extends StatelessWidget {
     );
   }
 }
-/**
- * 
- * 
- */

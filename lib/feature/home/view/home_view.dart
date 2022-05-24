@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import 'package:snack_over_vbt/feature/question_detail/view/question_detail_view.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
@@ -47,47 +48,34 @@ class HomeView extends StatelessWidget {
                       ),
                     )
                   : SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                      context.read<HomeCubit>().getUserQuestionImage(
-                          userId: questionData?[index].questionOwnerId);
-                      return Card(
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: context.lowBorderRadius,
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: context.paddingLow,
-                              child: titleOfTheCard(context,
-                                  imgUrl: context
-                                          .read<HomeCubit>()
-                                          .questionImage
-                                          ?.photoUrl ??
-                                      'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
-                                  surname:
-                                      "${context.read<HomeCubit>().questionImage?.surname}"
-                                          .capitalize(),
-                                  name:
-                                      "${context.read<HomeCubit>().questionImage?.name}"
-                                          .capitalize()),
-                            ),
-                            commentText(
-                                context,
-                                questionData?[index]
-                                        .questionContent
-                                        .toString()
-                                        .capitalize() ??
-                                    'a'),
-                            Row(
-                              children: [
-                                likeButton(context),
-                                likeNumber(context),
-                                commentIconAndNumber(context)
-                              ],
-                            )
-                          ],
+                      delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+                      context.read<HomeCubit>().getUserQuestionImage(userId: questionData?[index].questionOwnerId);
+                      return InkWell(
+                        onTap: () {
+                          context.navigateToPage(
+                              QuestionDetailView(question: context.read<HomeCubit>().questionsList![index], questionOwner: context.read<HomeCubit>().questionImage!,));
+                        },
+                        child: Card(
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: context.lowBorderRadius,
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: context.paddingLow,
+                                child: titleOfTheCard(context,
+                                    imgUrl: context.read<HomeCubit>().questionImage?.photoUrl ??
+                                        'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
+                                    surname: "${context.read<HomeCubit>().questionImage?.surname}".capitalize(),
+                                    name: "${context.read<HomeCubit>().questionImage?.name}".capitalize()),
+                              ),
+                              commentText(context, questionData?[index].questionContent.toString().capitalize() ?? 'a'),
+                              Row(
+                                children: [likeButton(context), likeNumber(context), commentIconAndNumber(context)],
+                              )
+                            ],
+                          ),
                         ),
                       );
                     }, childCount: questionData?.length))
@@ -107,10 +95,8 @@ class HomeView extends StatelessWidget {
         child: Container(
           height: context.dynamicHeight(0.1),
           width: context.dynamicWidth(0.2),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
-          child: Icon(Icons.notification_add,
-              color: context.appTheme.colorScheme.onSecondary),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
+          child: Icon(Icons.notification_add, color: context.appTheme.colorScheme.onSecondary),
         ),
       ),
       actions: [
