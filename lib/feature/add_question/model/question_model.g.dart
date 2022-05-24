@@ -10,6 +10,7 @@ QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) =>
     QuestionModel(
       questionOwnerId: json['questionOwnerId'] as String?,
       questionTitle: json['questionTitle'] as String?,
+      questionId: json['questionId'] as String?,
       questionContent: json['questionContent'] as String?,
       questionImage: json['questionImage'] as String?,
       questionCategory: (json['questionCategory'] as List<dynamic>?)
@@ -23,6 +24,7 @@ Map<String, dynamic> _$QuestionModelToJson(QuestionModel instance) =>
     <String, dynamic>{
       'questionOwnerId': instance.questionOwnerId,
       'questionTitle': instance.questionTitle,
+      'questionId': instance.questionId,
       'questionContent': instance.questionContent,
       'questionImage': instance.questionImage,
       'questionCategory': instance.questionCategory,

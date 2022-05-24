@@ -7,6 +7,7 @@ class QuestionModel {
     QuestionModel({
         this.questionOwnerId,
         this.questionTitle,
+        this.questionId,
         this.questionContent,
         this.questionImage,
         this.questionCategory,
@@ -16,6 +17,7 @@ class QuestionModel {
 
     String? questionOwnerId;
     String? questionTitle;
+    String? questionId;
     String? questionContent;
     String? questionImage;
     List<String>? questionCategory;

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kartal/kartal.dart';
@@ -41,6 +42,7 @@ class AddQuestionCubit extends Cubit<AddQuestionState> {
     categoryList.add(dropdownCategory ?? "");
 
     final questionModel = QuestionModel(
+        questionId: FirebaseFirestore.instance.collection('questions').doc().id,
         questionOwnerId: context.read<LocaleManager>().token,
         questionTitle: questionTitleContoller.text,
         questionContent: questionContentContoller.text,

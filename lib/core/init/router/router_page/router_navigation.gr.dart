@@ -44,10 +44,8 @@ class FlutterRouter extends _i6.RootStackRouter {
           routeData: routeData, child: const _i4.BottomNavBar());
     },
     ProfileSettingsViewRoute.name: (routeData) {
-      final args = routeData.argsAs<ProfileSettingsViewRouteArgs>(
-          orElse: () => const ProfileSettingsViewRouteArgs());
       return _i6.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i5.ProfileSettingsView(key: args.key));
+          routeData: routeData, child: const _i5.ProfileSettingsView());
     }
   };
 
@@ -111,23 +109,9 @@ class BottomNavBarRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.ProfileSettingsView]
-class ProfileSettingsViewRoute
-    extends _i6.PageRouteInfo<ProfileSettingsViewRouteArgs> {
-  ProfileSettingsViewRoute({_i7.Key? key})
-      : super(ProfileSettingsViewRoute.name,
-            path: '/profile-settings-view',
-            args: ProfileSettingsViewRouteArgs(key: key));
+class ProfileSettingsViewRoute extends _i6.PageRouteInfo<void> {
+  const ProfileSettingsViewRoute()
+      : super(ProfileSettingsViewRoute.name, path: '/profile-settings-view');
 
   static const String name = 'ProfileSettingsViewRoute';
-}
-
-class ProfileSettingsViewRouteArgs {
-  const ProfileSettingsViewRouteArgs({this.key});
-
-  final _i7.Key? key;
-
-  @override
-  String toString() {
-    return 'ProfileSettingsViewRouteArgs{key: $key}';
-  }
 }
