@@ -11,14 +11,14 @@ extension SignInEmaiilForm on LoginView {
               Expanded(
                 child: NameInput(
                   controller: context.read<LoginCubit>().nameController,
-                  label: 'Name',
+                  label: LocaleKeys.login_name.tr(),
                 ),
               ),
               context.emptySizedWidthBoxLow3x,
               Expanded(
                 child: NameInput(
                   controller: context.read<LoginCubit>().surnameController,
-                  label: 'Surname',
+                  label: LocaleKeys.login_surName.tr(),
                 ),
               ),
             ],
@@ -39,7 +39,8 @@ extension SignInEmaiilForm on LoginView {
                 onPressed: () {
                   context.read<LoginCubit>().signUpWithEmailPassword();
                 },
-                style: ElevatedButton.styleFrom(elevation: 10, shadowColor: Colors.pink, primary: (Colors.pink)),
+                style: ElevatedButton.styleFrom(
+                    elevation: 10, shadowColor: context.colorScheme.surface, primary: (context.colorScheme.surface)),
                 child: Text(LocaleKeys.login_title.tr())),
           ),
           SizedBox(height: context.dynamicHeight(0.04)),

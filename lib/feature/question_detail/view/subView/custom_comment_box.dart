@@ -9,7 +9,7 @@ extension CommentBoxExtension on QuestionDetailView {
             radius: 25,
             backgroundImage: NetworkImage(
               comment?.ownerImageUrl == null || (comment?.ownerImageUrl?.isEmpty ?? false)
-                  ? 'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png'
+                  ? ImageNetworkUrl.profileImageHome
                   : comment?.ownerImageUrl ?? "",
             )),
         Expanded(

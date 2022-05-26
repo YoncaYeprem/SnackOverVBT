@@ -11,7 +11,7 @@ extension ProfileImageCard on ProfileView {
             color: Colors.black.withOpacity(0.1),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, 1), // changes position of shadow
+            offset: const Offset(0, 1),
           ),
         ],
         borderRadius: context.normalBorderRadius,

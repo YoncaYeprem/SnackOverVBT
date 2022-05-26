@@ -1,7 +1,7 @@
 part of '../login.dart';
 
 extension SignUpEmaiilForm on LoginView {
-  Padding signupForm(BuildContext context,LoginState state) {
+  Padding signupForm(BuildContext context, LoginState state) {
     return Padding(
       padding: context.paddingLow,
       child: Column(
@@ -21,10 +21,7 @@ extension SignUpEmaiilForm on LoginView {
                 onPressed: () {
                   context.read<LoginCubit>().signInWithEmailPassword();
                 },
-                style: ElevatedButton.styleFrom(
-                    elevation: 10,
-                    shadowColor: Colors.pink,
-                    primary: (Colors.pink)),
+                style: ElevatedButton.styleFrom(elevation: 10, shadowColor: Colors.pink, primary: (Colors.pink)),
                 child: Text(LocaleKeys.login_title.tr())),
           ),
           SizedBox(height: context.dynamicHeight(0.04)),
@@ -35,15 +32,15 @@ extension SignUpEmaiilForm on LoginView {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CircleIconButton(
-                color: Colors.red, //TODO renkleri temadan çekilecektir
+                color: context.colorScheme.error,
                 icon: FontAwesomeIcons.google,
                 height: context.dynamicHeight(0.08),
                 onPressed: () async {
-                context.read<LoginCubit>().signInWithGoogle();
+                  context.read<LoginCubit>().signInWithGoogle();
                 },
               ),
               CircleIconButton(
-                color: Colors.black,
+                color: context.colorScheme.onError,
                 icon: FontAwesomeIcons.apple,
                 height: context.dynamicHeight(0.08),
                 onPressed: () {},

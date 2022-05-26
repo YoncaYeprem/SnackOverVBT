@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import '../../../core/init/locale_storage_manager.dart';
 import '../../../core/init/router/router_page/router_navigation.gr.dart';
-import '../../../product/utils/enums/theme_info_enum.dart';
 import '../../../product/utils/extension/capitaliaze_extension.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../product/utils/image_network_url.dart';
+import '../../../product/utils/question_example_text.dart';
 import '../viewmodel/cubit/profile_cubit.dart';
 part '../view/subView/text_field.dart';
 part '../view/subView/comment_text.dart';
@@ -47,7 +47,7 @@ class ProfileView extends StatelessWidget {
                           children: [
                             Container(
                               width: context.width,
-                              height: context.dynamicHeight(0.30),
+                              height: context.dynamicHeight(0.25),
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
@@ -70,7 +70,7 @@ class ProfileView extends StatelessWidget {
                                       profileImageCard(
                                           context,
                                           context.read<ProfileCubit>().userModel?.photoUrl ??
-                                              "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"),
+                                              ImageNetworkUrl.profileImageHome),
                                       profileNameText(
                                           context,
                                           "${context.read<ProfileCubit>().userModel?.name} ".capitalize() +
@@ -89,7 +89,7 @@ class ProfileView extends StatelessWidget {
                               child: profileMoreButton(
                                   context: context,
                                   onTap: () async {
-                                    await context.router.push(ProfileSettingsViewRoute());
+                                    await context.router.push(const ProfileSettingsViewRoute());
                                   }),
                             ),
                           ],
@@ -99,7 +99,7 @@ class ProfileView extends StatelessWidget {
                           bottom: 0,
                           child: Container(
                             width: context.width,
-                            height: context.dynamicHeight(0.65),
+                            height: context.dynamicHeight(0.64),
                             decoration: BoxDecoration(
                               borderRadius:
                                   const BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
@@ -117,7 +117,7 @@ class ProfileView extends StatelessWidget {
                                         width: 3.0,
                                         color: context.colorScheme.error.withOpacity(0.6),
                                       ),
-                                      insets: EdgeInsets.symmetric(horizontal: 64.0),
+                                      insets: const EdgeInsets.symmetric(horizontal: 64.0),
                                     ),
                                     tabs: [
                                       Text(
@@ -132,9 +132,7 @@ class ProfileView extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: TabBarView(children: [
-                                      //Tabpage 1
                                       _myQuestionTabPage(context),
-                                      //Tabpage2
                                       _myAnswerTabpage(context),
                                     ]),
                                   )
@@ -160,7 +158,7 @@ class ProfileView extends StatelessWidget {
           child: searchQuestionBar(context, LocaleKeys.profile_searchQuestionTitle.tr()),
         ),
         SizedBox(
-          height: context.dynamicHeight(0.4),
+          height: context.dynamicHeight(0.48),
           child: Padding(
             padding: context.paddingLow,
             child: ListView.builder(
@@ -181,8 +179,14 @@ class ProfileView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          commentIconAndNumber(context: context, icon: Icons.star, countNumber: "12k"),
-                          commentIconAndNumber(context: context, icon: Icons.message_outlined, countNumber: "12k"),
+                          commentIconAndNumber(
+                              context: context,
+                              icon: Icons.star,
+                              countNumber: QuestionDummyText.questionHomePageComment),
+                          commentIconAndNumber(
+                              context: context,
+                              icon: Icons.message_outlined,
+                              countNumber: QuestionDummyText.questionHomePageComment),
                           commentMoreButton(context)
                         ],
                       ),
@@ -226,8 +230,14 @@ class ProfileView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          commentIconAndNumber(context: context, icon: Icons.star, countNumber: "12k"),
-                          commentIconAndNumber(context: context, icon: Icons.message_outlined, countNumber: "12k"),
+                          commentIconAndNumber(
+                              context: context,
+                              icon: Icons.star,
+                              countNumber: QuestionDummyText.questionHomePageComment),
+                          commentIconAndNumber(
+                              context: context,
+                              icon: Icons.message_outlined,
+                              countNumber: QuestionDummyText.questionHomePageComment),
                           commentMoreButton(context)
                         ],
                       ),
@@ -255,7 +265,7 @@ class ProfileView extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Text(
-        '12k',
+        QuestionDummyText.questionHomePageComment,
         textAlign: TextAlign.center,
         style: context.textTheme.headline6,
       ),

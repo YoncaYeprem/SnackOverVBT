@@ -11,17 +11,17 @@ class EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofillHints: [AutofillHints.email],
+      autofillHints: const [AutofillHints.email],
       controller: controller,
       keyboardType: TextInputType.emailAddress,
-      style: context.textTheme.subtitle1?.copyWith(color: context.appTheme.colorScheme.error),
+      style: context.textTheme.subtitle1,
       validator: (value) => value.isValidEmail ? null : LocaleKeys.validation_notValidEmail.tr(),
       decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          labelText: LocaleKeys.input_email.tr(),
-          prefixIcon: Icon(Icons.mail)),
+          labelText: LocaleKeys.login_email.tr(),
+          prefixIcon: const Icon(Icons.mail)),
     );
   }
 }

@@ -27,7 +27,7 @@ extension InputFieldExtension on QuestionDetailView {
                 Icons.message_rounded,
                 color: context.appTheme.colorScheme.onSurface,
               ),
-              hintText: 'Yorumunuzu Yazınız',
+              hintText: QuestionDummyText.questionCommentDetail,
               hintStyle: context.textTheme.headlineSmall?.copyWith(color: context.appTheme.colorScheme.onSurface),
               contentPadding: context.verticalPaddingLow,
               focusedBorder: const OutlineInputBorder(
@@ -46,7 +46,7 @@ extension InputFieldExtension on QuestionDetailView {
             context.read<QuestionDetailCubit>().sendComment();
           },
           color: context.appTheme.colorScheme.background.withOpacity(0.7),
-          textColor: Colors.white,
+          textColor: context.colorScheme.onBackground,
           child: const Icon(
             Icons.send,
           ),

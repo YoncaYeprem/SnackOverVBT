@@ -21,7 +21,7 @@ extension TitleCard on HomeView {
                   '$name $surname',
                   style: context.textTheme.headline5,
                 ),
-                Text('.12H ago',
+                Text(QuestionDummyText.questionTimeHours,
                     style:
                         context.textTheme.headline6?.copyWith(color: context.colorScheme.background.withOpacity(0.8))),
               ],

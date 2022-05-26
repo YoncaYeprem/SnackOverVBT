@@ -7,9 +7,7 @@ import '../../../../core/init/localStorage/storage.dart';
 import '../../../../core/init/router/router_page/router_navigation.gr.dart';
 import '../../../../core/init/locale_storage_manager.dart';
 import '../../../../firebase_options.dart';
-import '../../../home/view/home_view.dart';
-import '../../../login/view/login.dart';
-import '../../../onboard/view/onboard_view.dart';
+
 import 'package:auto_route/auto_route.dart';
 
 part 'splash_state.dart';
@@ -39,13 +37,13 @@ class SplashCubit extends Cubit<SplashState> {
 
   checkUserForRouting() async {
     if (!storage.contains(StorageKeys.token) && storage.contains(StorageKeys.firstLoginApp)) {
-      await context.router.push(OnboardViewRoute());
+      await context.router.push(const OnboardViewRoute());
     } else if (!storage.contains(StorageKeys.token) && !storage.contains(StorageKeys.firstLoginApp)) {
       await context.router.push(LoginViewRoute());
     } else {
       context.read<LocaleManager>().saveToken(LocaleStorageManager.instance.getStringValue(StorageKeys.token));
 
-      await context.router.push(BottomNavBarRoute());
+      await context.router.push(const BottomNavBarRoute());
     }
   }
 }

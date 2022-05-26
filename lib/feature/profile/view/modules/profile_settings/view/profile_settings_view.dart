@@ -39,9 +39,7 @@ class ProfileSettingsView extends StatelessWidget {
           BlocProvider(
               create: (context) => ProfileSettingsCubit(context),
               child: BlocConsumer<ProfileSettingsCubit, ProfileSettingsState>(
-                listener: (context, state) {
-                  // TODO: implement listener
-                },
+                listener: (context, state) {},
                 builder: (context, state) {
                   return Card(
                     child: ListTile(
@@ -101,28 +99,26 @@ class ProfileSettingsView extends StatelessWidget {
 
   BlocProvider<ProfileSettingsCubit> _logoutCard() {
     return BlocProvider(
-            create: (context) => ProfileSettingsCubit(context),
-            child: BlocConsumer<ProfileSettingsCubit, ProfileSettingsState>(
-              listener: (context, state) {
-                // TODO: implement listener
+        create: (context) => ProfileSettingsCubit(context),
+        child: BlocConsumer<ProfileSettingsCubit, ProfileSettingsState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return Card(
+                child: ListTile(
+              onTap: () async {
+                context.read<ProfileSettingsCubit>().logout(context);
               },
-              builder: (context, state) {
-                return Card(
-                    child: ListTile(
-                  onTap: () async {
-                    context.read<ProfileSettingsCubit>().logout(context);
-                  },
-                  title: Text(
-                    LocaleKeys.profileSettings_logout.tr(),
-                  ),
-                  trailing: Icon(
-                    Icons.logout_rounded,
-                    color: context.appTheme.errorColor,
-                    size: 35,
-                  ),
-                ));
-              },
+              title: Text(
+                LocaleKeys.profileSettings_logout.tr(),
+              ),
+              trailing: Icon(
+                Icons.logout_rounded,
+                color: context.appTheme.errorColor,
+                size: 35,
+              ),
             ));
+          },
+        ));
   }
 
   Card _resetPassCard(BuildContext context) {

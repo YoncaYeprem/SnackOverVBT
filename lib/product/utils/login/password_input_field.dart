@@ -21,7 +21,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      autofillHints: [AutofillHints.password],
+      autofillHints: const [AutofillHints.password],
       keyboardType: TextInputType.visiblePassword,
       validator: (value) => validateText(value ?? ''),
       obscureText: _isSecureText,
@@ -43,8 +43,8 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      labelText: LocaleKeys.input_password.tr(),
-      prefixIcon: Icon(Icons.lock),
+      labelText: LocaleKeys.login_password.tr(),
+      prefixIcon: const Icon(Icons.lock),
       suffixIcon: IconButton(
         icon: buildAnimatedCrossFade,
         onPressed: _changeSecureText,
@@ -65,8 +65,8 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       crossFadeState: isCrossFadeState,
       firstCurve: Curves.easeInOut,
       duration: context.durationLow,
-      firstChild: Icon(Icons.visibility),
-      secondChild: Icon(Icons.visibility_off),
+      firstChild: const Icon(Icons.visibility),
+      secondChild: const Icon(Icons.visibility_off),
     );
   }
 }

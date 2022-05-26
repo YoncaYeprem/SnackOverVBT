@@ -9,14 +9,14 @@ extension BackButton on ProfileView {
             color: Colors.black.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 10,
-            offset: Offset(0, 1), // changes position of shadow
+            offset: const Offset(0, 1), // changes position of shadow
           ),
         ],
-        color: Colors.white,
+        color: context.colorScheme.onBackground,
         borderRadius: context.lowBorderRadius,
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Icon(Icons.arrow_back),
       ),
     );

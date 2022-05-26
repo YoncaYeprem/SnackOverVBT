@@ -7,12 +7,12 @@ extension TextFieldExtension on HomeView {
       style: context.textTheme.headline4,
       decoration: InputDecoration(
         border: InputBorder.none,
-        hintText: 'Search for anything you want',
+        hintText: LocaleKeys.home_seacrhText.tr(),
         hintStyle: context.textTheme.headline4,
         filled: true,
         suffixIcon: const Icon(Icons.search),
         suffixIconColor: context.colorScheme.primary,
-        fillColor: Colors.white54,
+        fillColor: context.colorScheme.onBackground,
         contentPadding: context.paddingLow,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors().lightPinkColor),

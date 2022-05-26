@@ -13,7 +13,7 @@ extension CommentIcon on HomeView {
         Align(
           alignment: Alignment.bottomCenter,
           child: Text(
-            '12k',
+            QuestionDummyText.questionHomePageComment,
             textAlign: TextAlign.center,
             style: context.textTheme.headline6,
           ),

@@ -41,7 +41,6 @@ class QuestionDetailCubit extends Cubit<QuestionDetailState> {
   Future<void> getQuestionAnswersFromFirebase() async {
     commentsList = await FirebaseStorageFunctions().getAnswersForQuestion(questionId: question.questionId ?? "");
     emit(QuestionDetailGetAllComments());
-    print(commentsList);
   }
 
   sendComment() async {

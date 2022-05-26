@@ -18,8 +18,7 @@ extension AppBarExtension on QuestionDetailView {
         CircleAvatar(
             radius: 20,
             backgroundImage: NetworkImage(
-              context.read<QuestionDetailCubit>().questionOwner.photoUrl ??
-                  'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
+              context.read<QuestionDetailCubit>().questionOwner.photoUrl ?? ImageNetworkUrl.profileImageHome,
             )),
         Padding(
           padding: context.horizontalPaddingNormal,

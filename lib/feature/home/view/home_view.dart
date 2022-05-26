@@ -7,6 +7,8 @@ import 'package:snack_over_vbt/feature/question_detail/view/question_detail_view
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/theme/color/i_color.dart';
 import '../../../product/utils/extension/capitaliaze_extension.dart';
+import '../../../product/utils/image_network_url.dart';
+import '../../../product/utils/question_example_text.dart';
 import '../viewmodel/cubit/home_cubit.dart';
 
 part '../view/subView/comment_icon_number.dart';
@@ -24,13 +26,11 @@ class HomeView extends StatelessWidget {
     return BlocProvider<HomeCubit>(
       create: (context) => HomeCubit(context),
       child: BlocConsumer<HomeCubit, HomeState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           var questionData = context.read<HomeCubit>().questionsList;
           return CustomScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             slivers: [
               _appbar(context),
               SliverToBoxAdapter(
@@ -52,8 +52,10 @@ class HomeView extends StatelessWidget {
                       context.read<HomeCubit>().getUserQuestionImage(userId: questionData?[index].questionOwnerId);
                       return InkWell(
                         onTap: () {
-                          context.navigateToPage(
-                              QuestionDetailView(question: context.read<HomeCubit>().questionsList![index], questionOwner: context.read<HomeCubit>().questionImage!,));
+                          context.navigateToPage(QuestionDetailView(
+                            question: context.read<HomeCubit>().questionsList![index],
+                            questionOwner: context.read<HomeCubit>().questionImage!,
+                          ));
                         },
                         child: Card(
                           elevation: 10,
@@ -66,7 +68,7 @@ class HomeView extends StatelessWidget {
                                 padding: context.paddingLow,
                                 child: titleOfTheCard(context,
                                     imgUrl: context.read<HomeCubit>().questionImage?.photoUrl ??
-                                        'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
+                                        ImageNetworkUrl.profileImageHome,
                                     surname: "${context.read<HomeCubit>().questionImage?.surname}".capitalize(),
                                     name: "${context.read<HomeCubit>().questionImage?.name}".capitalize()),
                               ),
@@ -95,7 +97,7 @@ class HomeView extends StatelessWidget {
         child: Container(
           height: context.dynamicHeight(0.1),
           width: context.dynamicWidth(0.2),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)), //TODO dynamic cagads
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           child: Icon(Icons.notification_add, color: context.appTheme.colorScheme.onSecondary),
         ),
       ),
@@ -105,8 +107,7 @@ class HomeView extends StatelessWidget {
           width: context.dynamicWidth(0.18),
           child: CircleAvatar(
               backgroundImage: NetworkImage(
-            context.read<HomeCubit>().userImage?.photoUrl ??
-                'https://flyclipart.com/thumb2/avatar-contact-person-profile-user-icon-137780.png',
+            context.read<HomeCubit>().userImage?.photoUrl ?? ImageNetworkUrl.profileImageHome,
           )),
         )
       ],
@@ -126,7 +127,7 @@ class HomeView extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Text(
-        '12k',
+        QuestionDummyText.questionHomePageComment,
         textAlign: TextAlign.center,
         style: context.textTheme.headline6,
       ),

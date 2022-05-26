@@ -40,7 +40,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      // builder: (context, router) => router!,
       routerDelegate: _rootRouter.delegate(),
       routeInformationParser: _rootRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,
@@ -51,8 +50,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-/**context.read<ProfileSettingsCubit>().isLightTheme == true
-                  ? ThemeManager.createTheme(AppThemeLight())
-                  : ThemeManager.createTheme(DarkThemeLight()), */
-
-                 // 

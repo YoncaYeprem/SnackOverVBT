@@ -15,7 +15,6 @@ class AuthFunctions {
       return credential;
     } on FirebaseAuthException catch (e) {
       //TODO: make some error
-      print(e.code);
     }
   }
 

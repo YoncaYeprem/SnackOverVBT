@@ -1,5 +1,3 @@
-import '../../../feature/add_question/viewmodel/cubit/add_question_cubit.dart';
-
 import '../../../feature/add_question/model/question_model.dart';
 
 class LocaleManager {

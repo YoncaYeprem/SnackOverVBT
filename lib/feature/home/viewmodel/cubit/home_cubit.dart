@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/init/localStorage/storage.dart';
-import '../../../../core/init/locale_storage_manager.dart';
 import '../../../login/model/user_model.dart';
 import 'package:provider/provider.dart';
 
@@ -29,8 +28,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<List<QuestionModel>?> getAllQuestions() async {
-    questionsList =
-        await FirebaseStorageFunctions().getAllQuestionsFromFirebase();
+    questionsList = await FirebaseStorageFunctions().getAllQuestionsFromFirebase();
     LocaleManager().saveQuestionModel(questionsList);
 
     emit(HomeGetDatas());
@@ -39,15 +37,13 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<UserModel?>? getUserHomeImage() async {
-    userImage = await FirebaseStorageFunctions()
-        .getUserDatas(userId: context.read<LocaleManager>().token ?? '');
+    userImage = await FirebaseStorageFunctions().getUserDatas(userId: context.read<LocaleManager>().token ?? '');
     emit(HomeGetUser());
     return userImage;
   }
 
   Future<UserModel?>? getUserQuestionImage({String? userId}) async {
-    questionImage =
-        await FirebaseStorageFunctions().getUserDatas(userId: userId);
+    questionImage = await FirebaseStorageFunctions().getUserDatas(userId: userId);
     emit(HomeGetImage());
     return questionImage;
   }

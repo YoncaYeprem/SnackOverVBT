@@ -12,16 +12,17 @@ class AppColors {
   final selectedColor = const Color(0xff08222e);
   final unselectedColor = const Color(0xff97b1c4);
   final darkGrey = const Color(0xFF6E7B8C);
-
+  final shadowColor = Colors.pink;
   final pinkColor = const Color(0xFFDD3DE1);
   final purpleColor = const Color(0xFF6043B2);
-  final darkPink = Color.fromARGB(255, 106, 53, 107);
-  final darkPurpleColor = Color.fromARGB(255, 69, 49, 124);
+  final darkPink = const Color.fromARGB(255, 106, 53, 107);
+  final darkPurpleColor = const Color.fromARGB(255, 69, 49, 124);
   final profileTabBackgroundColor = const Color(0xFFEFF0F7);
-  final profileTabBackgroundDarkColor = Color.fromARGB(255, 116, 116, 117);
-
+  final profileTabBackgroundDarkColor = const Color.fromARGB(255, 116, 116, 117);
+  final marigold = const Color(0xFFFFC107);
   final lightAppbarColor = Colors.white;
   final darkAppbarColor = Colors.white54;
+  final red = Colors.red;
 }
 
 abstract class IColorTheme {

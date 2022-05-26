@@ -3,23 +3,23 @@
         "welcome": "Hoşgeldiniz"
     },
     "home": {
-        "discover": "Keşfet"
+        "discover": "Keşfet",
+        "homeText" : "Anasayfa ",
+        "profile" : "Profil",
+        "seacrhText" : "İstediğiniz bir şeyi arayın"
     },
     "login": {
         "title": "Giriş Yap",
         "registerTitle": "Kayıt Ol",
         "forgot": "Şifremi Unuttum",
         "orLogin": "Veya",
-        "withoutLogin": "Üye Olmadan Devam Et"
+        "withoutLogin": "Üye Olmadan Devam Et",
+        "name" : "İsim",
+        "surName" : "Soyadı",
+        "password" : "Şifre",
+        "email" : "Mail"
     },
-    "buttons": {
-        "next": "İleri",
-        "finish": "Bitir"
-    },
-    "input": {
-        "password": "Şifre",
-        "email": "Mail"
-    },
+
     "validation": {
         "notValidPassword": "Lütfen şifrenizi en az 6 hane giriniz.",
         "notValidEmail": "Lütfen email adresinizi doğru giriniz",

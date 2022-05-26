@@ -59,12 +59,10 @@ class LoginView extends StatelessWidget {
                     ]),
                   ),
                   Expanded(
-                    child: Container(
-                      child: TabBarView(children: [
-                        signupForm(context, state),
-                        signinForm(context, state),
-                      ]),
-                    ),
+                    child: TabBarView(children: [
+                      signupForm(context, state),
+                      signinForm(context, state),
+                    ]),
                   )
                 ],
               ),

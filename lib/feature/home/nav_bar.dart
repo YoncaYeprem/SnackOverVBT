@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
+import '../../core/init/lang/locale_keys.g.dart';
 import '../add_question/view/add_question_sheet.dart';
 import '../profile/view/profile_view.dart';
 import 'view/home_view.dart';
@@ -14,7 +16,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
-  List pages = [HomeView(), ProfileView()];
+  List pages = [const HomeView(), const ProfileView()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +37,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   Widget _showBottomNav() {
     return BottomNavigationBar(
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home '),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+      items: [
+        BottomNavigationBarItem(icon: const Icon(Icons.home), label: LocaleKeys.home_homeText.tr()),
+        BottomNavigationBarItem(icon: const Icon(Icons.person), label: LocaleKeys.home_profile.tr()),
       ],
       currentIndex: _selectedIndex,
       selectedItemColor: context.appTheme.colorScheme.onSecondary,
-      unselectedItemColor: Colors.grey,
+      unselectedItemColor: context.appTheme.colorScheme.background,
       onTap: _onTap,
     );
   }

@@ -46,6 +46,5 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> getUserAnswersFromFirebase() async {
     myAnswers = await FirebaseStorageFunctions().getUserOwnAnswers(userId: context.read<LocaleManager>().token);
-    print(myAnswers);
   }
 }
