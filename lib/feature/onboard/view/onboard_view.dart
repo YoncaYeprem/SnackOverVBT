@@ -58,15 +58,15 @@ class OnboardView extends StatelessWidget {
         Text(
           onboardItems[index].title,
           textAlign: TextAlign.center,
-          style: context.textTheme.displaySmall?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+          style:
+              context.textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold, color: context.colorScheme.error),
         ),
         SizedBox(
           height: context.dynamicHeight(0.02),
         ),
         Text(onboardItems[index].description,
-            textAlign: TextAlign.center, style: context.textTheme.titleMedium?.copyWith()),
+            textAlign: TextAlign.center,
+            style: context.textTheme.titleMedium?.copyWith(color: context.colorScheme.onError)),
       ],
     );
   }
@@ -103,7 +103,7 @@ class OnboardView extends StatelessWidget {
               },
               child: Text(
                 LocaleKeys.onboard_skipButton.tr(),
-                style: context.textTheme.labelLarge,
+                style: context.textTheme.labelLarge?.copyWith(color: context.colorScheme.onError),
               )),
           ElevatedButton(
               onPressed: () {
@@ -117,7 +117,7 @@ class OnboardView extends StatelessWidget {
                 context.read<OnboardCubit>().currentIndex == onboardItems.length - 1
                     ? LocaleKeys.onboard_doneButton.tr()
                     : LocaleKeys.onboard_nextButton.tr(),
-                style: context.textTheme.headline6,
+                style: context.textTheme.headline6?.copyWith(color: context.colorScheme.onError),
               ))
         ],
       ),
