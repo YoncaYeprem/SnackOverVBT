@@ -14,7 +14,6 @@ class OnboardCubit extends Cubit<OnboardState> {
   int currentIndex = 0;
   late PageController controller = PageController(initialPage: 0);
   List colorList = [AppColors().lightPinkColor, AppColors().primaryColor, AppColors().backgroundColor];
-  //List colorList = [Color(0xffEEEAFE), Color(0xffE2EFFB), Color(0xffF8EAE0)];
 
   void changePage(int index) {
     currentIndex = index;
