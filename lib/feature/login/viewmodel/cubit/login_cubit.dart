@@ -19,20 +19,32 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.context) : super(LoginInitial());
 
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController emailLoginController = TextEditingController();
+  final TextEditingController passwordLoginController = TextEditingController();
+
+  final FocusNode emailLoginNode = FocusNode();
+  final FocusNode passwordLoginNode = FocusNode();
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController surnameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailRegisterController = TextEditingController();
+  final TextEditingController passwordRegisterController = TextEditingController();
 
   LoginModel? userModel;
   User? response;
   BuildContext context;
   String? userId;
   UserModel? user;
+  bool isloading = false;
+
+  void changeLoading() {
+    isloading = !isloading;
+    emit(LoginLoading());
+  }
 
   Future signUpWithEmailPassword() async {
-    UserCredential credential =
-        await AuthFunctions().signUpUserWithEmail(email: emailController.text, password: passwordController.text);
+    UserCredential credential = await AuthFunctions()
+        .signUpUserWithEmail(email: emailRegisterController.text, password: passwordRegisterController.text);
     if (credential != null) {
       userId = credential.user!.uid;
     }
@@ -41,8 +53,8 @@ class LoginCubit extends Cubit<LoginState> {
         userId: userId,
         name: nameController.text,
         surname: surnameController.text,
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailRegisterController.text,
+        password: passwordRegisterController.text,
         photoUrl: ImageConstants.instance.person);
 
     if (user != null) {
@@ -55,15 +67,18 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future signInWithEmailPassword() async {
-    userModel = LoginModel(emailController.text, passwordController.text);
+    changeLoading();
+    userModel = LoginModel(emailLoginController.text, passwordLoginController.text);
     User? response = await AuthFunctions().signInEmailPassword(userModel, context);
     if (response != null) {
       keepTokenData(response.uid);
+      changeLoading();
       if (response.uid.isNotEmpty) {
         context.navigateToPage(const BottomNavBar());
-      } else {
-        //TODO: Giriş başarısız yönlendirmesi
-      }
+      } else {}
+    } else {
+      changeLoading();
+      emit(LoginError());
     }
   }
 

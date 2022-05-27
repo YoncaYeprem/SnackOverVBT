@@ -6,9 +6,10 @@ import '../../../core/init/lang/locale_keys.g.dart';
 
 class PasswordInputField extends StatefulWidget {
   final TextEditingController? controller;
+  final FocusNode? node;
   final String? Function(String? value) onValidator;
 
-  const PasswordInputField({Key? key, this.controller, required this.onValidator}) : super(key: key);
+  const PasswordInputField({Key? key, this.controller,this.node, required this.onValidator}) : super(key: key);
   @override
   _PasswordInputFieldState createState() => _PasswordInputFieldState();
 }
@@ -21,6 +22,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      focusNode: widget.node,
       autofillHints: const [AutofillHints.password],
       keyboardType: TextInputType.visiblePassword,
       validator: (value) => validateText(value ?? ''),

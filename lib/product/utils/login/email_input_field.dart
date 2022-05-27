@@ -6,12 +6,14 @@ import '../../../core/init/lang/locale_keys.g.dart';
 
 class EmailInput extends StatelessWidget {
   final TextEditingController? controller;
+  final FocusNode? node;
 
-  const EmailInput({Key? key, this.controller}) : super(key: key);
+  const EmailInput({Key? key, this.controller, this.node}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       autofillHints: const [AutofillHints.email],
+      focusNode: node,
       controller: controller,
       keyboardType: TextInputType.emailAddress,
       style: context.textTheme.subtitle1,

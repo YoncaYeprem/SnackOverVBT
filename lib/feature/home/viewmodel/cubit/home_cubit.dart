@@ -42,10 +42,9 @@ class HomeCubit extends Cubit<HomeState> {
     return userImage;
   }
 
-  Future<UserModel?>? getUserQuestionImage({String? userId}) async {
+  Future<UserModel?>? getQuestionQwnerImage({String? userId}) async {
     questionImage = await FirebaseStorageFunctions().getUserDatas(userId: userId);
     emit(HomeGetImage());
-    return questionImage;
   }
 
   void changeLoading() {

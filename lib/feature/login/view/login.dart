@@ -12,8 +12,8 @@ import '../../../product/utils/login/name_input_field.dart';
 import '../../../product/utils/login/password_input_field.dart';
 import '../viewmodel/cubit/login_cubit.dart';
 
-part 'subView/signin_view.dart';
-part 'subView/signup_view.dart';
+part 'subView/sign_up_view.dart';
+part 'subView/sign_in_view.dart';
 
 class LoginView extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -32,39 +32,49 @@ class LoginView extends StatelessWidget {
           return Scaffold(
             body: DefaultTabController(
               length: 2,
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: context.dynamicHeight(0.06)),
-                  SizedBox(height: context.dynamicHeight(0.3), child: Image.asset(ImageConstants.instance.loginTittle)),
-                  SizedBox(height: context.dynamicHeight(0.01)),
-                  Container(
-                    constraints: BoxConstraints.expand(
-                      height: context.dynamicHeight(0.08),
-                    ),
-                    child: TabBar(indicatorColor: Colors.pink, tabs: [
-                      Tab(
-                        child: Text(
-                          LocaleKeys.login_title.tr(),
-                          style:
-                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+              child: SingleChildScrollView(
+                physics: context.read<LoginCubit>().emailLoginNode.hasFocus ||
+                        context.read<LoginCubit>().passwordLoginNode.hasFocus
+                    ? const ScrollPhysics()
+                    : const NeverScrollableScrollPhysics(),
+                child: SizedBox(
+                  height: context.dynamicHeight(1),
+                  child: Column(
+                    children: <Widget>[
+                      context.emptySizedHeightBoxHigh,
+                      SizedBox(
+                          height: context.dynamicHeight(0.3), child: Image.asset(ImageConstants.instance.loginTittle)),
+                      SizedBox(height: context.dynamicHeight(0.01)),
+                      Container(
+                        constraints: BoxConstraints.expand(
+                          height: context.dynamicHeight(0.08),
                         ),
+                        child: TabBar(indicatorColor: Colors.pink, tabs: [
+                          Tab(
+                            child: Text(
+                              LocaleKeys.login_title.tr(),
+                              style: context.textTheme.headline6
+                                  ?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                            ),
+                          ),
+                          Tab(
+                            child: Text(
+                              LocaleKeys.login_registerTitle.tr(),
+                              style: context.textTheme.headline6
+                                  ?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                            ),
+                          ),
+                        ]),
                       ),
-                      Tab(
-                        child: Text(
-                          LocaleKeys.login_registerTitle.tr(),
-                          style:
-                              context.textTheme.headline6?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
-                        ),
-                      ),
-                    ]),
+                      Expanded(
+                        child: TabBarView(children: [
+                          signinForm(context, state),
+                          signupForm(context, state),
+                        ]),
+                      )
+                    ],
                   ),
-                  Expanded(
-                    child: TabBarView(children: [
-                      signupForm(context, state),
-                      signinForm(context, state),
-                    ]),
-                  )
-                ],
+                ),
               ),
             ),
           );

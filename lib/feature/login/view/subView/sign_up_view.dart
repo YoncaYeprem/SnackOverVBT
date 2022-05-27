@@ -1,7 +1,7 @@
 part of '../login.dart';
 
-extension SignInEmaiilForm on LoginView {
-  Padding signinForm(BuildContext context, LoginState state) {
+extension SignUpEmaiilForm on LoginView {
+  Padding signupForm(BuildContext context, LoginState state) {
     return Padding(
       padding: context.paddingLow,
       child: Column(
@@ -24,11 +24,11 @@ extension SignInEmaiilForm on LoginView {
             ],
           ),
           context.emptySizedHeightBoxLow3x,
-          EmailInput(controller: context.read<LoginCubit>().emailController),
+          EmailInput(controller: context.read<LoginCubit>().emailRegisterController),
           context.emptySizedHeightBoxLow3x,
           PasswordInputField(
-            controller: context.read<LoginCubit>().passwordController,
-            onValidator: (value) => context.read<LoginCubit>().passwordController.text == value
+            controller: context.read<LoginCubit>().passwordRegisterController,
+            onValidator: (value) => context.read<LoginCubit>().passwordRegisterController.text == value
                 ? null
                 : LocaleKeys.validation_notSameText.tr(),
           ),

@@ -1,16 +1,19 @@
 part of '../login.dart';
 
-extension SignUpEmaiilForm on LoginView {
-  Padding signupForm(BuildContext context, LoginState state) {
+extension SignInForm on LoginView {
+  Padding signinForm(BuildContext context, LoginState state) {
     return Padding(
       padding: context.paddingLow,
       child: Column(
         children: [
-          EmailInput(controller: context.read<LoginCubit>().emailController),
+          EmailInput(
+              controller: context.read<LoginCubit>().emailLoginController,
+              node: context.read<LoginCubit>().emailLoginNode),
           SizedBox(height: context.dynamicHeight(0.01)),
           PasswordInputField(
-            controller: context.read<LoginCubit>().passwordController,
-            onValidator: (value) => context.read<LoginCubit>().passwordController.text == value
+            controller: context.read<LoginCubit>().passwordLoginController,
+            node: context.read<LoginCubit>().passwordLoginNode,
+            onValidator: (value) => context.read<LoginCubit>().passwordLoginController.text == value
                 ? null
                 : LocaleKeys.validation_notSameText.tr(),
           ),
@@ -22,10 +25,15 @@ extension SignUpEmaiilForm on LoginView {
                   context.read<LoginCubit>().signInWithEmailPassword();
                 },
                 style: ElevatedButton.styleFrom(elevation: 10, shadowColor: Colors.pink, primary: (Colors.pink)),
-                child: Text(LocaleKeys.login_title.tr())),
+                child: context.read<LoginCubit>().isloading
+                    ? const Center(child: CircularProgressIndicator())
+                    : Text(LocaleKeys.login_title.tr())),
           ),
           SizedBox(height: context.dynamicHeight(0.04)),
-          Text(LocaleKeys.login_orLogin.tr()),
+          Text(
+            LocaleKeys.login_orLogin.tr(),
+            style: context.textTheme.headline5,
+          ),
           SizedBox(height: context.dynamicHeight(0.04)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,

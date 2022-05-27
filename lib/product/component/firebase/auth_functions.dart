@@ -36,6 +36,16 @@ class AuthFunctions {
         if (context != null) {
           _sendSnacMessage(context, 'User Not Found');
         }
+      } else if (e.code == "wrong-password") {
+        if (context != null) {
+          _sendSnacMessage(context, 'Wrong Password');
+        }
+      } else if (e.code == "invalid-email") {
+        if (context != null) {
+          _sendSnacMessage(context, 'Invalid Email');
+        }
+      } else {
+        _sendSnacMessage(context, 'Login failed. Please try again.');
       }
     }
     return user;

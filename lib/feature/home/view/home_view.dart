@@ -49,7 +49,7 @@ class HomeView extends StatelessWidget {
                     )
                   : SliverList(
                       delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-                      context.read<HomeCubit>().getUserQuestionImage(userId: questionData?[index].questionOwnerId);
+                      context.read<HomeCubit>().getQuestionQwnerImage(userId: questionData?[index].questionOwnerId);
                       return InkWell(
                         onTap: () {
                           context.navigateToPage(QuestionDetailView(

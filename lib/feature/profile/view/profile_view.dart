@@ -158,7 +158,7 @@ class ProfileView extends StatelessWidget {
           child: searchQuestionBar(context, LocaleKeys.profile_searchQuestionTitle.tr()),
         ),
         SizedBox(
-          height: context.dynamicHeight(0.48),
+          height: context.dynamicHeight(0.45),
           child: Padding(
             padding: context.paddingLow,
             child: ListView.builder(
@@ -209,7 +209,7 @@ class ProfileView extends StatelessWidget {
           child: searchQuestionBar(context, LocaleKeys.profile_searchAnswerTitle.tr()),
         ),
         SizedBox(
-          height: context.dynamicHeight(0.4),
+          height: context.dynamicHeight(0.45),
           child: Padding(
             padding: context.paddingLow,
             child: ListView.builder(
